@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import {  Poppins } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/providers/ThemeProvider";
 
 const poppins = Poppins({
   weight:"300",
@@ -10,22 +11,34 @@ const poppins = Poppins({
 
 
 export const metadata: Metadata = {
-  title: "Shahariar Sohan Portfolio Website",
-  description: "I am a MERN stack developer.Passionate about database,server,system design",
+  title: "Shahariar Sohan | Portfolio",
+  description: "Backend Developer Portfolio - MERN + PostgreSQL + Prisma",
+  icons: {
+    icon: "/images/icon.png",
+    shortcut: "/images/icon.png",
+    apple: "/apple-touch-icon.png",
+  },
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={poppins.className}
-      >
-        {children}
-      </body>
-    </html>
+    <>
+      <html lang="en" suppressHydrationWarning>
+        <head />
+        <body>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <div className={poppins.className}> {children}</div>
+          </ThemeProvider>
+        </body>
+      </html>
+    </>
   );
 }

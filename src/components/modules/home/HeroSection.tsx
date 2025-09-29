@@ -4,7 +4,7 @@ export function HeroSection() {
   return (
     <section className="min-h-screen flex flex-col items-center justify-center px-6 container mx-auto mt-10 lg:mt-0">
       <div className="max-w-7xl mx-auto w-full">
-        <div className="flex flex-col md:flex-row justify-center  items-center md:gap-20 ">
+        <div className="flex flex-col md:flex-row justify-center  items-center gap-10 md:gap-20 ">
           {/* Content - Left Side */}
           <div className="space-y-8 text-center lg:text-left">
             <div className="space-y-4">

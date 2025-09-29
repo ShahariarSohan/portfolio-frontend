@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import LoginButton from "@/components/utils/LoginButton";
 import { MobileMenu } from "@/components/utils/MobileMenu";
+import { ModeToggle } from "@/components/utils/ModeToggle";
 
 export function Navbar() {
   const navLinks = [
@@ -34,7 +35,8 @@ export function Navbar() {
           </div>
 
           {/* Right Side */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2">
+            <ModeToggle/>
             <LoginButton />
             {/* Mobile Menu (Client Component) */}
             <MobileMenu navLinks={navLinks} />
