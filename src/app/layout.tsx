@@ -35,7 +35,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <div className={poppins.className}> {children}</div>
+            <div className={`${poppins.className}`} > {children}</div>
           </ThemeProvider>
         </body>
       </html>

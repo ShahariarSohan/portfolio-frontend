@@ -43,21 +43,21 @@ export function HeroSection() {
       <div className="grid md:grid-cols-3 gap-6 mt-20">
         <div className="space-y-2">
           <h3 className="text-sm font-medium text-foreground uppercase tracking-wider">
-            Design For
+            Work For
           </h3>
-          <p className="text-foreground font-medium">Web Application</p>
+          <p className="text-foreground font-semibold">Web Application</p>
         </div>
         <div className="space-y-2">
           <h3 className="text-sm font-medium text-foreground uppercase tracking-wider">
             Phone
           </h3>
-          <p className="text-foreground font-medium">+10 (67) 367-9034</p>
+          <p className="text-foreground font-semibold">+10 (67) 367-9034</p>
         </div>
         <div className="space-y-2">
           <h3 className="text-sm font-medium text-foreground uppercase tracking-wider">
             Drop your Message
           </h3>
-          <p className="text-foreground font-medium">
+          <p className="text-foreground font-semibold">
             sohanshahariar4@gmail.com
           </p>
         </div>
