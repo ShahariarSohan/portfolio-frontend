@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export function HeroSection() {
+export function Hero() {
   return (
     <section className="min-h-screen flex flex-col items-center justify-center px-6 container mx-auto mt-10 lg:mt-0">
       <div className="max-w-7xl mx-auto w-full">
