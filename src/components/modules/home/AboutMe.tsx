@@ -3,8 +3,8 @@ import {
   FaCode,
   FaLightbulb,
   FaReact,
-  FaServer,
 } from "react-icons/fa";
+import { SiNextdotjs } from "react-icons/si";
 
 export default function AboutMe() {
   return (
@@ -87,7 +87,7 @@ export default function AboutMe() {
             </div>
 
             <div className="flex items-center gap-4 p-4 bg-muted rounded-xl shadow hover:shadow-lg transition">
-              <FaServer className="text-3xl text-purple-500" />
+              <SiNextdotjs className="text-3xl text-foreground" />
               <div>
                 <h4 className="font-semibold text-foreground">
                   Next.js App Building

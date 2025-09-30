@@ -27,7 +27,7 @@ export default function TechStack() {
       <div className="container mx-auto px-6 lg:px-20">
         {/* Section Heading */}
         <h2 className="text-4xl font-bold text-center text-foreground mb-12">
-          My Tech Stack
+          Tech Stack
         </h2>
 
         {/* Tech Grid */}

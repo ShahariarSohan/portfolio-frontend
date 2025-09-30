@@ -1,6 +1,8 @@
 import AboutMe from "@/components/modules/home/AboutMe";
 import { Hero } from "@/components/modules/home/Hero";
+import ProjectsSection from "@/components/modules/project/ProjectsSection";
 import TechStack from "@/components/modules/home/TechStack";
+
 
 
 export default function Home() {
@@ -9,6 +11,7 @@ export default function Home() {
       <Hero></Hero>
       <AboutMe></AboutMe>
       <TechStack></TechStack>
+      <ProjectsSection></ProjectsSection>
     </div>
   );
 }

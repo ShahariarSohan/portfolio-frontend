@@ -1,7 +1,9 @@
+import ProjectsSection from "@/components/modules/project/ProjectsSection";
+
 export default function Projects() {
   return (
     <div>
-      <h1>This is Projects component</h1>
+      <ProjectsSection></ProjectsSection>
     </div>
   );
 }
