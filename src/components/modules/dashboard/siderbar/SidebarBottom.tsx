@@ -28,7 +28,10 @@ export function SidebarBottom() {
             </Link>
           </SidebarMenuButton>
         </SidebarMenuItem>
-
+        <div className="flex items-center justify-between  rounded-md    cursor-pointer ">
+          <span className="text-sm font-medium">Select Theme</span>
+          <ModeToggle />
+        </div>
         <SidebarMenuItem>
           <Button
             variant="destructive"
@@ -40,12 +43,6 @@ export function SidebarBottom() {
           </Button>
         </SidebarMenuItem>
       </SidebarMenu>
-      <div className="flex items-center justify-between  rounded-md    cursor-pointer ">
-        <span className="text-sm font-medium">
-         Select Theme
-        </span>
-        <ModeToggle />
-      </div>
     </div>
   );
 }

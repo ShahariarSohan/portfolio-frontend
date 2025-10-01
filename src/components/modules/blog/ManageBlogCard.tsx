@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Eye, Edit3, Trash2 } from "lucide-react";
+import { Eye, Edit2, Trash2 } from "lucide-react";
+import Link from "next/link";
 
 interface ManageBlogCardProps {
   id: number;
@@ -21,8 +22,6 @@ export default function ManageBlogCard({
   thumbnail,
   createdAt,
   updatedAt,
-  onView,
-  onEdit,
   onDelete,
 }: ManageBlogCardProps) {
   return (
@@ -51,12 +50,21 @@ export default function ManageBlogCard({
 
       {/* Action Buttons */}
       <div className="flex gap-2">
-        <Button variant="outline" size="sm" onClick={() => onView(id)}>
-          <Eye size={16} />
+        {/* View button navigates to the blog view page */}
+        <Button asChild variant="outline" size="sm">
+          <Link href={`/dashboard/manage-blogs/view/${id}`}>
+            <Eye size={16} />
+          </Link>
         </Button>
-        <Button variant="outline" size="sm" onClick={() => onEdit(id)}>
-          <Edit3 size={16} />
+
+        {/* Edit button navigates to the blog edit page */}
+        <Button asChild variant="outline" size="sm">
+          <Link href={`/dashboard/manage-blogs/edit/${id}`}>
+            <Edit2 size={16} />
+          </Link>
         </Button>
+
+        {/* Delete remains a function call */}
         <Button variant="destructive" size="sm" onClick={() => onDelete(id)}>
           <Trash2 size={16} />
         </Button>

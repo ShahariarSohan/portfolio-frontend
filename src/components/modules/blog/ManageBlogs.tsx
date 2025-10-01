@@ -4,6 +4,7 @@ import ManageBlogCard from "@/components/modules/blog/ManageBlogCard";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Plus } from "lucide-react";
+import Link from "next/link";
 
 // Demo Blogs
 const blogs = [
@@ -54,8 +55,15 @@ export default function ManageBlogs() {
       {/* Header with Create Button */}
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-semibold">Manage Blogs</h1>
-        <Button variant="outline" onClick={handleCreate} className="flex items-center gap-2">
-          <Plus size={16} /> Create Blog
+        <Button
+          asChild
+          variant="outline"
+          onClick={handleCreate}
+          className="flex items-center gap-2"
+        >
+          <Link href={`/dashboard/manage-blogs/create/${1}`}>
+            <Plus size={16} /> Create Blog
+          </Link>
         </Button>
       </div>
 
