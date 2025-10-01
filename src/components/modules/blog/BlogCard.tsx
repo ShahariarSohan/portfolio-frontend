@@ -3,24 +3,19 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Calendar } from "lucide-react";
+import { IBlog } from "@/types/blog.type";
 
-interface BlogCardProps {
-  id: number;
-  title: string;
-  thumbnail: string;
-  description: string;
-  tags: string[];
-  createdAt: number;
-}
+
 
 export default function BlogCard({
   id,
   title,
+  content,
   thumbnail,
   description,
   tags,
   createdAt,
-}: BlogCardProps) {
+}: IBlog) {
   // Slice description and add ellipsis
   const shortDescription =
     description.length > 130 ? description.slice(0, 130) + "..." : description;
@@ -75,7 +70,7 @@ export default function BlogCard({
         {/* Date */}
         <div className="flex items-center gap-1 text-xs text-muted-foreground pt-2">
           <Calendar size={14} />
-          <span>{new Date(createdAt).toLocaleDateString()}</span>
+          <span>{new Date(createdAt!).toLocaleDateString()}</span>
         </div>
       </div>
     </div>

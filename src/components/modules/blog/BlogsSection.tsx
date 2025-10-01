@@ -4,6 +4,7 @@ const demoBlogs = [
   {
     id: 1,
     title: "Mastering Prisma with PostgreSQL",
+    content:"something",
     thumbnail: "/images/sohan.jpg",
     description:
       "Learn how to use Prisma ORM with PostgreSQL to build scalable, type-safe backend systems with clean schema design and migrations.",
@@ -14,6 +15,7 @@ const demoBlogs = [
   {
     id: 2,
     title: "Next.js 14 App Router Deep Dive",
+    content:"Hello",
     thumbnail: "/images/sohan.jpg",
     description:
       "A complete guide to understanding Next.js App Router, Server Components, and performance optimization techniques.",

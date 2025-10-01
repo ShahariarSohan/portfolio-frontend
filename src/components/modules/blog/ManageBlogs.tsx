@@ -61,7 +61,7 @@ export default function ManageBlogs() {
           onClick={handleCreate}
           className="flex items-center gap-2"
         >
-          <Link href={`/dashboard/manage-blogs/create/${1}`}>
+          <Link href={`/dashboard/manage-blogs/create`}>
             <Plus size={16} /> Create Blog
           </Link>
         </Button>
