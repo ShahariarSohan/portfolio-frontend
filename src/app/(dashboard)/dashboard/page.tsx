@@ -1,7 +1,12 @@
+
+import DashboardChart from "@/components/modules/dashboard/DashboardChart";
+import { DashboardStats } from "@/components/modules/dashboard/DashboardStats";
+
 export default function Dashboard() {
   return (
     <div>
-      <h1>This is Dashboard</h1>
+      <DashboardStats></DashboardStats>
+      <DashboardChart></DashboardChart>
     </div>
   );
 }
