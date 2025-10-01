@@ -8,12 +8,13 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { Home,  Edit2 } from "lucide-react";
+import { Home,  FileText,Folder } from "lucide-react";
 
 
 const items = [
   { title: "Dashboard", url: "/dashboard", icon: Home },
-  { title: "Manage Blogs", url: "/dashboard/manage-blogs", icon: Edit2 },
+  { title: "Manage Blogs", url: "/dashboard/manage-blogs", icon: FileText },
+  { title: "Manage Projects", url: "/dashboard/manage-projects", icon: Folder },
 ];
 
 export function SidebarNav() {

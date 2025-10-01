@@ -1,7 +1,10 @@
-export default function ViewBlog() {
+import BlogDetails from "@/components/modules/blog/BlogDetails";
+
+export default async function ViewBlog({ params }: { params: Promise<{ id: string }> }) {
+    const { id } = await params;
   return (
     <div>
-      <h1>This is View Blog</h1>
+      <BlogDetails id={id}></BlogDetails>
     </div>
   );
 }

@@ -1,27 +1,28 @@
 "use client";
 
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+
 
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { useState } from "react";
-import { BlogSchema, BlogSchemaType } from "@/types/blog.schema";
-import { Badge } from "lucide-react";
+import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-
+import { Button } from "@/components/ui/button";
+import { BlogSchema, BlogSchemaType } from "@/types/blog.schema";
 
 export function CreateBlogForm() {
+  // -------------------------------
+  // 🔹 Hooks & States
+  // -------------------------------
   const form = useForm<BlogSchemaType>({
     resolver: zodResolver(BlogSchema),
     defaultValues: {
@@ -35,34 +36,32 @@ export function CreateBlogForm() {
 
   const [tagInput, setTagInput] = useState("");
 
-  const handleAddTag = () => {
-    const tag = tagInput.trim();
-    if (tag && !form.getValues("tags").includes(tag)) {
-      form.setValue("tags", [...form.getValues("tags"), tag]);
-    }
-    setTagInput("");
+  // -------------------------------
+  // 🔹 Handlers
+  // -------------------------------
+  const handleTagChange = (value: string) => {
+    setTagInput(value);
+
+    // Split tags by commas, trim spaces
+    const tags = value
+      .split(",")
+      .map((tag) => tag.trim())
+      .filter((tag) => tag.length > 0);
+
+    form.setValue("tags", tags);
   };
 
-  const handleRemoveTag = (tag: string) => {
-    const updated = form.getValues("tags").filter((t) => t !== tag);
-    form.setValue("tags", updated);
-  };
-
-  const onSubmit = async (values: BlogSchemaType) => {
-    try {
-      console.log("Submitting Blog:", values);
-      // TODO: integrate with backend POST /api/blogs
-    } catch (error) {
-      console.error("Error submitting blog:", error);
-    }
+  const onSubmit = (values: BlogSchemaType) => {
+    console.log("✅ Blog data submitted:", values);
+    // You can send this to your API endpoint via fetch/axios
   };
 
   return (
-    <div className="max-w-3xl mx-auto bg-card p-6 rounded-xl shadow-md">
-      <h2 className="text-2xl font-semibold mb-6">Create Blog</h2>
+    <div className="max-w-3xl mx-auto p-6 bg-card border rounded-xl shadow-sm">
+      <h2 className="text-2xl font-semibold mb-6">Create New Blog</h2>
 
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
           {/* Title */}
           <FormField
             control={form.control}
@@ -71,25 +70,7 @@ export function CreateBlogForm() {
               <FormItem>
                 <FormLabel>Title</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter blog title..." {...field} />
-                </FormControl>
-                <FormDescription>
-                  The main heading of your blog post.
-                </FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          {/* Description */}
-          <FormField
-            control={form.control}
-            name="description"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Description</FormLabel>
-                <FormControl>
-                  <Textarea placeholder="Short summary..." {...field} />
+                  <Input placeholder="Enter blog title" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -114,17 +95,36 @@ export function CreateBlogForm() {
             )}
           />
 
+          {/* Description */}
+          <FormField
+            control={form.control}
+            name="description"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Short Description</FormLabel>
+                <FormControl>
+                  <Textarea
+                    placeholder="Briefly describe your blog..."
+                    rows={3}
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
           {/* Content */}
           <FormField
             control={form.control}
             name="content"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Content</FormLabel>
+                <FormLabel>Main Content</FormLabel>
                 <FormControl>
                   <Textarea
-                    rows={8}
-                    placeholder="Write your full blog content here..."
+                    placeholder="Write your full blog content..."
+                    rows={6}
                     {...field}
                   />
                 </FormControl>
@@ -139,41 +139,20 @@ export function CreateBlogForm() {
             name="tags"
             render={() => (
               <FormItem>
-                <FormLabel>Tags</FormLabel>
-                <div className="flex gap-2">
+                <FormLabel>Tags (comma separated)</FormLabel>
+                <FormControl>
                   <Input
-                    placeholder="Add tag"
+                    placeholder="e.g. nextjs, react, prisma"
                     value={tagInput}
-                    onChange={(e) => setTagInput(e.target.value)}
-                    onKeyDown={(e) =>
-                      e.key === "Enter" && (e.preventDefault(), handleAddTag())
-                    }
+                    onChange={(e) => handleTagChange(e.target.value)}
                   />
-                  <Button
-                    type="button"
-                    variant="outline"
-                    onClick={handleAddTag}
-                    className="whitespace-nowrap"
-                  >
-                    Add
-                  </Button>
-                </div>
-                <div className="flex flex-wrap gap-2 mt-2">
-                  {form.watch("tags").map((tag) => (
-                    <Badge
-                      key={tag}
-                      className="cursor-pointer"
-                      onClick={() => handleRemoveTag(tag)}
-                    >
-                      {tag} ✕
-                    </Badge>
-                  ))}
-                </div>
+                </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
 
+          {/* Submit */}
           <Button type="submit" className="w-full">
             Create Blog
           </Button>

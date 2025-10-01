@@ -1,3 +1,4 @@
+
 import { z } from "zod";
 
 export const BlogSchema = z.object({
@@ -24,3 +25,10 @@ export const BlogSchema = z.object({
 });
 
 export type BlogSchemaType = z.infer<typeof BlogSchema>;
+ export const updateBlogSchema = BlogSchema
+  .partial()
+  .refine((data) => Object.keys(data).length > 0, {
+    message: "At least one field must be updated",
+  });
+
+  export type UpdateBlogSchema = z.infer<typeof updateBlogSchema>;
