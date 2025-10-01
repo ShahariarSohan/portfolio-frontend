@@ -63,8 +63,8 @@ export default function ManageProjects() {
           onClick={handleCreate}
           className="flex items-center gap-2"
         >
-          <Link href={`/dashboard/manage-projects/create`}>
-            <Plus size={16} /> Create project
+          <Link href={`/dashboard/manage-projects/add`}>
+            <Plus size={16} /> Add project
           </Link>
         </Button>
       </div>
