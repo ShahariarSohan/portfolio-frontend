@@ -1,6 +1,6 @@
 // app/dashboard/layout.tsx
 
-import { AppSidebar } from "@/components/modules/dashboard/AppSidebar";
+import { AppSidebar } from "@/components/modules/dashboard/siderbar/AppSidebar";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 
 export default function DashboardLayout({
