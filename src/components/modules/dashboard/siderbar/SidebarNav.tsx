@@ -8,14 +8,17 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { Home, Edit3 } from "lucide-react";
+import { Home,  Edit2 } from "lucide-react";
+
 
 const items = [
   { title: "Dashboard", url: "/dashboard", icon: Home },
-  { title: "Manage Blogs", url: "/dashboard/manage-blogs", icon: Edit3 },
+  { title: "Manage Blogs", url: "/dashboard/manage-blogs", icon: Edit2 },
 ];
 
 export function SidebarNav() {
+   
+     
   return (
     <SidebarGroup>
       <SidebarGroupLabel>Application</SidebarGroupLabel>
@@ -24,7 +27,7 @@ export function SidebarNav() {
           {items.map((item) => (
             <SidebarMenuItem key={item.title}>
               <SidebarMenuButton asChild>
-                <Link href={item.url} className="flex items-center gap-2">
+                <Link href={item.url} className="flex items-center gap-4">
                   <item.icon className="h-4 w-4" />
                   <span>{item.title}</span>
                 </Link>

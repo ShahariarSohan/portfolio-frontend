@@ -2,7 +2,12 @@
 
 import { AppSidebar } from "@/components/modules/dashboard/siderbar/AppSidebar";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { Poppins } from "next/font/google";
 
+const poppins = Poppins({
+  weight:"300",
+  subsets: ["latin","devanagari"],
+});
 export default function DashboardLayout({
   children,
 }: {

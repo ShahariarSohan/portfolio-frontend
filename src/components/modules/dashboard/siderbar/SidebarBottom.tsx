@@ -8,17 +8,18 @@ import {
 } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, LogOut } from "lucide-react";
+import { ModeToggle } from "@/components/shared/navbar/ModeToggle";
 
 export function SidebarBottom() {
   const router = useRouter();
 
-  const handleLogout = () => { // Replace with real logout logic
+  const handleLogout = () => {
     router.push("/");
   };
 
   return (
     <div className="border-t border-border p-5 space-y-2">
-      <SidebarMenu>
+      <SidebarMenu className="space-y-1">
         <SidebarMenuItem>
           <SidebarMenuButton asChild>
             <Link href="/" className="flex items-center gap-2 text-sm">
@@ -39,6 +40,12 @@ export function SidebarBottom() {
           </Button>
         </SidebarMenuItem>
       </SidebarMenu>
+      <div className="flex items-center justify-between  rounded-md    cursor-pointer ">
+        <span className="text-sm font-medium">
+         Select Theme
+        </span>
+        <ModeToggle />
+      </div>
     </div>
   );
 }
