@@ -1,19 +1,17 @@
 import EditBlogForm from "@/components/modules/blog/EditBlogForm";
+import getSingleBlog from "@/services/blogServices/getSingleBlog";
+import { IBlog } from "@/types/blog.type";
 
-export default function EditBlog() {
-  const initialBlogData = {
-    id: 1,
-    title: "Building a Portfolio with Next.js",
-    content:
-      "This is the full content of the blog post explaining how to build a portfolio with Next.js...",
-    thumbnail: "https://example.com/images/portfolio-thumbnail.jpg",
-    description: "A short description of building a Next.js portfolio.",
-    tags: ["nextjs", "react", "prisma"],
-  };
+export default async function EditBlog({params}:{params:Promise<{id:string}>}) {
+  const { id } = await params;
+    const intId = Number(id);
+    const res = await getSingleBlog(intId);
+    const initialBlogData: IBlog = res.data;
+ 
 
   return (
     <div>
-      <EditBlogForm initialData={initialBlogData}></EditBlogForm>
+      <EditBlogForm initialData={initialBlogData} id={intId}></EditBlogForm>
     </div>
   );
 }

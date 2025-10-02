@@ -17,15 +17,19 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { updateBlogSchema, UpdateBlogSchema } from "@/types/blog.schema";
+import editBlog from "@/actions/blogActions/editBlog";
+import { IBlog } from "@/types/blog.type";
+import { toast } from "sonner";
+import { redirect } from "next/navigation";
 
 interface EditBlogFormProps {
-  initialData: UpdateBlogSchema & { id: number };
- 
+  initialData: IBlog;
+  id: number;
 }
 
 export default function EditBlogForm({
   initialData,
-  
+  id
 }: EditBlogFormProps) {
   const form = useForm<UpdateBlogSchema>({
     resolver: zodResolver(updateBlogSchema),
@@ -51,6 +55,22 @@ export default function EditBlogForm({
 
   const handleFormSubmit = async (values: UpdateBlogSchema) => {
     console.log("form edit blog")
+    try { 
+      const res = await editBlog(values, id);
+      console.log(res)
+      if (res.success) {
+        toast.success("Blog updated successfully")
+        redirect("/dashboard/manage-blogs")
+      }
+      else {
+        if (!res.success) {
+          toast.error("Something went wrong")
+        }
+      }
+    }
+    catch (err) {
+      console.log(err)
+    }
   };
 
   return (
