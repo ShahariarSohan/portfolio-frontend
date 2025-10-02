@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import {  Poppins } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/ThemeProvider";
+import { Toaster } from "sonner";
 
 const poppins = Poppins({
   weight:"300",
@@ -35,7 +36,8 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <div className={`${poppins.className}`} > {children}</div>
+            <Toaster richColors position="bottom-right" />
+            <div className={`${poppins.className}`}> {children}</div>
           </ThemeProvider>
         </body>
       </html>

@@ -9,8 +9,8 @@ interface ManageBlogCardProps {
   id: number;
   title: string;
   thumbnail?: string;
-  createdAt: string;
-  updatedAt: string;
+  createdAt: number;
+  updatedAt: number;
   onView: (id: number) => void;
   onEdit: (id: number) => void;
   onDelete: (id: number) => void;
@@ -35,7 +35,7 @@ export default function ManageBlogCard({
               alt={title}
               width={64}
               height={64}
-              className="object-cover"
+              className="w-full h-full object-cover"
             />
           </div>
         )}

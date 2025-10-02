@@ -10,7 +10,6 @@ import { IBlog } from "@/types/blog.type";
 export default function BlogCard({
   id,
   title,
-  content,
   thumbnail,
   description,
   tags,

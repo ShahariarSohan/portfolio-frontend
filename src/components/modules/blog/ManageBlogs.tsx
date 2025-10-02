@@ -5,31 +5,12 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Plus } from "lucide-react";
 import Link from "next/link";
+import { getAllBlogs } from "@/services/blogServices/getAllBlogs";
+import { IBlog } from "@/types/blog.type";
 
 // Demo Blogs
-const blogs = [
-  {
-    id: 1,
-    title: "Building a Portfolio with Next.js",
-    thumbnail: "/images/sohan.jpg",
-    createdAt: "2025-09-01T10:30:00Z",
-    updatedAt: "2025-09-10T12:15:00Z",
-  },
-  {
-    id: 2,
-    title: "Understanding Prisma ORM for Backend",
-    thumbnail: "/images/sohan.jpg",
-    createdAt: "2025-08-15T09:00:00Z",
-    updatedAt: "2025-08-20T14:45:00Z",
-  },
-  {
-    id: 3,
-    title: "MERN Stack Full Tutorial",
-    thumbnail: "/images/sohan.jpg",
-    createdAt: "2025-07-30T08:20:00Z",
-    updatedAt: "2025-08-05T11:10:00Z",
-  },
-];
+ const res = await getAllBlogs({cache:"no-store", next: { tags: ["BLOGS"] } })
+  const blogs = res.data;
 
 export default function ManageBlogs() {
   const [blogList, setBlogList] = useState(blogs);
@@ -43,7 +24,7 @@ export default function ManageBlogs() {
   };
 
   const handleDelete = (id: number) => {
-    setBlogList(blogList.filter((blog) => blog.id !== id));
+    setBlogList(blogList.filter((blog:IBlog) => blog.id !== id));
   };
 
   const handleCreate = () => {
@@ -69,14 +50,14 @@ export default function ManageBlogs() {
 
       {/* Blog Cards List */}
       <div className="flex flex-col gap-2">
-        {blogList.map((blog) => (
+        {blogList.map((blog:IBlog) => (
           <ManageBlogCard
             key={blog.id}
-            id={blog.id}
+            id={blog.id!}
             title={blog.title}
             thumbnail={blog.thumbnail}
-            createdAt={blog.createdAt}
-            updatedAt={blog.updatedAt}
+            createdAt={blog.createdAt!}
+            updatedAt={blog.updatedAt!}
             onView={handleView}
             onEdit={handleEdit}
             onDelete={handleDelete}
