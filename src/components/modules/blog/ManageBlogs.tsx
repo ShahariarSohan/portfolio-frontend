@@ -9,6 +9,8 @@ import { getAllBlogs } from "@/services/blogServices/getAllBlogs";
 import { IBlog } from "@/types/blog.type";
 import { useEffect, useState } from "react";
 import { ManageBlogSkeletonCard } from "./ManageBlogSkeletonCard";
+import { toast } from "sonner";
+import deleteBlog from "@/actions/blogActions/deleteBlog";
 
 export default function ManageBlogs() {
   const [blogs, setBlogs] = useState([]);
@@ -26,9 +28,23 @@ export default function ManageBlogs() {
     getBlogs();
   }, []);
 
-  // if (blogs.length===0) {
-  //   return
-  // }
+ const handleDelete = async (id: number) => {
+     try {
+       
+       const res = await deleteBlog(id);
+       console.log(res);
+       if (res.success) {
+         setBlogs(blogs.filter((blog:IBlog)=>blog.id!==id))
+         toast.success("Blog Deleted");
+       } else {
+         if (!res.success) {
+           toast.error("Something went wrong");
+         }
+       }
+     } catch (err) {
+       console.log(err);
+     }
+   };
   return (
     <div className="flex flex-col gap-4">
       {/* Header with Create Button */}
@@ -63,6 +79,7 @@ export default function ManageBlogs() {
               thumbnail={blog.thumbnail}
               createdAt={blog.createdAt!}
               updatedAt={blog.updatedAt!}
+              onDelete={handleDelete}
             />
           ))}
         </div>

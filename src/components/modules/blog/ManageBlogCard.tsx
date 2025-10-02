@@ -4,8 +4,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Eye, Edit2, Trash2 } from "lucide-react";
 import Link from "next/link";
-import deleteBlog from "@/actions/blogActions/deleteBlog";
-import { toast } from "sonner";
+
 
 
 interface ManageBlogCardProps {
@@ -14,6 +13,7 @@ interface ManageBlogCardProps {
   thumbnail?: string;
   createdAt: string;
   updatedAt: string;
+  onDelete: (id: number) => void;
 }
 
 export default function ManageBlogCard({
@@ -22,27 +22,11 @@ export default function ManageBlogCard({
   thumbnail,
   createdAt,
   updatedAt,
+  onDelete,
 }: ManageBlogCardProps) {
   
 
-  const handleDelete = async (id: number) => {
-    try {
-      
-      const res = await deleteBlog(id);
-      console.log(res);
-      if (res.success) {
-          
-          
-        toast.success("Blog Deleted");
-      } else {
-        if (!res.success) {
-          toast.error("Something went wrong");
-        }
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  
   return (
     <div className="w-full flex items-center justify-between gap-4 p-3 border rounded-md bg-card dark:bg-card-dark">
       {/* Thumbnail + Info */}
@@ -87,7 +71,7 @@ export default function ManageBlogCard({
         <Button
           variant="destructive"
           size="sm"
-          onClick={() => handleDelete(id)}
+          onClick={() => onDelete(id)}
         >
           <Trash2 size={16} />
         </Button>
