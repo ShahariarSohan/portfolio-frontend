@@ -1,28 +1,11 @@
+import { IBlog } from "@/types/blog.type";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
-const demoBlogs = [
-  {
-    id: 1,
-    title: "Mastering Prisma with PostgreSQL",
-    thumbnail: "/images/sohan.jpg",
-    content: `
-      Prisma is an advanced ORM that simplifies database access in Node.js and TypeScript environments.
-      It provides a clean schema-driven workflow that ensures type safety, migration control, and maintainable data access.
 
-      In this article, we’ll explore how to integrate Prisma with PostgreSQL, structure your database models, 
-      and handle production-level concerns such as connection pooling, performance tuning, and transaction management.
 
-      Whether you're building a REST or GraphQL API, Prisma allows backend developers to scale codebases efficiently while keeping queries elegant and consistent.
-    `,
-    tags: ["Prisma", "PostgreSQL", "Backend"],
-    views: 312,
-    createdAt: "2025-09-25",
-  },
-];
-
-export default async function BlogDetails({ id }: { id: string }) {
-  const blog = demoBlogs.find((b) => b.id === Number(id));
+export default async function BlogDetails({ blog }: { blog:IBlog}) {
+  
   if (!blog) return notFound();
 
   return (
