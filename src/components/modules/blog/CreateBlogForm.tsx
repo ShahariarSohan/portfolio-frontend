@@ -20,12 +20,11 @@ import { Button } from "@/components/ui/button";
 import { BlogSchema, BlogSchemaType } from "@/types/blog.schema";
 import { toast } from "sonner";
 import createBlog from "@/actions/blogActions/createBlog";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
+
 
 export function CreateBlogForm() {
-  // -------------------------------
-  // 🔹 Hooks & States
-  // -------------------------------
+  const router = useRouter();
   const form = useForm<BlogSchemaType>({
     resolver: zodResolver(BlogSchema),
     defaultValues: {
@@ -61,18 +60,20 @@ export function CreateBlogForm() {
       console.log(res)
       if (res.success) {
         toast.success("Blog created successfully")
-        redirect("/dashboard/manage-blogs")
+        router.push("/dashboard/manage-blogs")
       }
       else {
-         if (!res.success) {
-           toast.error("Blog creation failed");
+        if (!res.success) {
+          if (res.message === "Title already exists") {
+            toast.error(res.message);
+          } else {
+            toast.error("Something went wrong");
+          }
          }
       }
      }
     catch (err) {
       console.log(err)
-     
-     
     }
   }
     return (

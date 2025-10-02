@@ -20,7 +20,8 @@ import { updateBlogSchema, UpdateBlogSchema } from "@/types/blog.schema";
 import editBlog from "@/actions/blogActions/editBlog";
 import { IBlog } from "@/types/blog.type";
 import { toast } from "sonner";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
+
 
 interface EditBlogFormProps {
   initialData: IBlog;
@@ -31,6 +32,7 @@ export default function EditBlogForm({
   initialData,
   id
 }: EditBlogFormProps) {
+  const router=useRouter()
   const form = useForm<UpdateBlogSchema>({
     resolver: zodResolver(updateBlogSchema),
     defaultValues: {
@@ -59,12 +61,17 @@ export default function EditBlogForm({
       const res = await editBlog(values, id);
       console.log(res)
       if (res.success) {
-        toast.success("Blog updated successfully")
-        redirect("/dashboard/manage-blogs")
-      }
-      else {
+        toast.success("Blog updated successfully");
+        router.push("/dashboard/manage-blogs");
+      } else {
         if (!res.success) {
-          toast.error("Something went wrong")
+          if (res.message === "Title already exists") {
+            toast.error(res.message);
+          }
+          else {
+            toast.error("Something went wrong");
+          }
+          
         }
       }
     }

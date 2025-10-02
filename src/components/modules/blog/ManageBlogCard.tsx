@@ -4,6 +4,9 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Eye, Edit2, Trash2 } from "lucide-react";
 import Link from "next/link";
+import deleteBlog from "@/actions/blogActions/deleteBlog";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 interface ManageBlogCardProps {
   id: number;
@@ -11,9 +14,6 @@ interface ManageBlogCardProps {
   thumbnail?: string;
   createdAt: number;
   updatedAt: number;
-  onView: (id: number) => void;
-  onEdit: (id: number) => void;
-  onDelete: (id: number) => void;
 }
 
 export default function ManageBlogCard({
@@ -22,8 +22,24 @@ export default function ManageBlogCard({
   thumbnail,
   createdAt,
   updatedAt,
-  onDelete,
 }: ManageBlogCardProps) {
+  const router = useRouter();
+  const handleDelete = async (id: number) => {
+    try {
+      const res = await deleteBlog(id);
+      console.log(res);
+      if (res.success) {
+        toast.success("Blog Deleted");
+        router.push("/dashboard/manage-blogs");
+      } else {
+        if (!res.success) {
+          toast.error("Something went wrong");
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div className="w-full flex items-center justify-between gap-4 p-3 border rounded-md bg-card dark:bg-card-dark">
       {/* Thumbnail + Info */}
@@ -42,8 +58,8 @@ export default function ManageBlogCard({
         <div className="flex flex-col">
           <p className="font-medium text-base line-clamp-1">{title}</p>
           <div className="flex gap-4 text-sm text-muted-foreground mt-1">
-            <span>Created: {new Date(createdAt).toLocaleDateString()}</span>
-            <span>Updated: {new Date(updatedAt).toLocaleDateString()}</span>
+            <span>Created: {createdAt}</span>
+            <span>Updated: {updatedAt}</span>
           </div>
         </div>
       </div>
@@ -65,7 +81,11 @@ export default function ManageBlogCard({
         </Button>
 
         {/* Delete remains a function call */}
-        <Button variant="destructive" size="sm" onClick={() => onDelete(id)}>
+        <Button
+          variant="destructive"
+          size="sm"
+          onClick={() => handleDelete(id)}
+        >
           <Trash2 size={16} />
         </Button>
       </div>
