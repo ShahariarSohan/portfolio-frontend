@@ -69,7 +69,8 @@ export default function BlogCard({
         {/* Date */}
         <div className="flex items-center gap-1 text-xs text-muted-foreground pt-2">
           <Calendar size={14} />
-          <span>{createdAt}</span>
+          <span>Created: {new Date(createdAt!).toLocaleDateString()}</span>
+          
         </div>
       </div>
     </div>

@@ -22,7 +22,6 @@ export default function ManageBlogs() {
       const blogs = res.data;
       setBlogs(blogs);
       setLoading(false);
-      console.log(blogs);
     };
     getBlogs();
   }, []);
@@ -50,7 +49,7 @@ export default function ManageBlogs() {
           </div>
         )}
       </div>{" "}
-      {blogs.length === 0 ? (
+      {blogs.length === 0&&!loading ? (
         <div>
           <h1 className="text-2xl font-semibold text-center mt-10">No Data Found</h1>
         </div>

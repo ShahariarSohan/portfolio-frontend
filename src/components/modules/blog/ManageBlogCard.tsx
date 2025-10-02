@@ -23,13 +23,16 @@ export default function ManageBlogCard({
   createdAt,
   updatedAt,
 }: ManageBlogCardProps) {
-  console.log(typeof createdAt,typeof updatedAt)
   
+
   const handleDelete = async (id: number) => {
     try {
+      
       const res = await deleteBlog(id);
       console.log(res);
       if (res.success) {
+          
+          
         toast.success("Blog Deleted");
       } else {
         if (!res.success) {
@@ -58,8 +61,8 @@ export default function ManageBlogCard({
         <div className="flex flex-col">
           <p className="font-medium text-base line-clamp-1">{title}</p>
           <div className="flex gap-4 text-sm text-muted-foreground mt-1">
-            <span>Created: {createdAt}</span>
-            <span>Updated: {updatedAt}</span>
+            <span>Created: {new Date(createdAt).toLocaleDateString()}</span>
+            <span>Updated: {new Date(updatedAt).toLocaleDateString()}</span>
           </div>
         </div>
       </div>
