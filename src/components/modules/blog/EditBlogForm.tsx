@@ -81,6 +81,8 @@ export default function EditBlogForm({
   };
 
   return (
+     <div className="max-w-3xl mx-auto p-6 bg-card border rounded-xl shadow-sm">
+        <h2 className="text-2xl font-semibold mb-6">Update Blog</h2>
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(handleFormSubmit)}
@@ -172,6 +174,7 @@ export default function EditBlogForm({
           </Button>
         </div>
       </form>
-    </Form>
+      </Form>
+      </div>
   );
 }

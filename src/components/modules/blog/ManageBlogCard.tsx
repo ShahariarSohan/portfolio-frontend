@@ -6,14 +6,14 @@ import { Eye, Edit2, Trash2 } from "lucide-react";
 import Link from "next/link";
 import deleteBlog from "@/actions/blogActions/deleteBlog";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
+
 
 interface ManageBlogCardProps {
   id: number;
   title: string;
   thumbnail?: string;
-  createdAt: number;
-  updatedAt: number;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export default function ManageBlogCard({
@@ -23,14 +23,14 @@ export default function ManageBlogCard({
   createdAt,
   updatedAt,
 }: ManageBlogCardProps) {
-  const router = useRouter();
+  console.log(typeof createdAt,typeof updatedAt)
+  
   const handleDelete = async (id: number) => {
     try {
       const res = await deleteBlog(id);
       console.log(res);
       if (res.success) {
         toast.success("Blog Deleted");
-        router.push("/dashboard/manage-blogs");
       } else {
         if (!res.success) {
           toast.error("Something went wrong");

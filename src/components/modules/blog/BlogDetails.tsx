@@ -31,9 +31,9 @@ export default async function BlogDetails({ blog }: { blog:IBlog}) {
           {blog.tags.map((tag, i) => (
             <span
               key={i}
-              className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-sm font-medium rounded-full"
+              className="px-3 py-1 bg-blue-100 dark:bg-gray-700 text-blue-800 dark:text-blue-200 text-sm font-medium rounded"
             >
-              {tag}
+              #{tag}
             </span>
           ))}
         </div>

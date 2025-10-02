@@ -1,4 +1,4 @@
-
+"use server"
 type NextCache = "force-cache" | "no-store" | "default";
 
 interface FetchOptions {

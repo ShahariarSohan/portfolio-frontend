@@ -7,6 +7,6 @@ export interface IProject {
   liveLink: string;
   features: string[];
   tags: string[];
-  createdAt?: number;
-  updatedAt?: number;
+  createdAt?: string;
+  updatedAt?: string;
 }

@@ -5,6 +5,6 @@ export interface IBlog {
   thumbnail: string;
   description: string;
   tags: string[];
-  createdAt?: number;
-  updatedAt?: number;
+  createdAt?: string;
+  updatedAt?: string;
 }
