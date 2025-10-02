@@ -11,7 +11,7 @@ export default function AboutMe() {
     <section id="about" className="py-20 bg-background">
       <div className="container mx-auto px-6 lg:px-20">
         {/* Section Heading */}
-        <h2 className="text-4xl font-bold text-center text-foreground mb-12">
+        <h2 className="text-3xl font-bold text-center text-foreground mb-12">
           About Me
         </h2>
 

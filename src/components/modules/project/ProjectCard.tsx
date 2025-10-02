@@ -39,9 +39,9 @@ export default function ProjectCard({
       <div className="p-4 flex flex-col justify-between h-[160px] sm:h-[180px]">
         {/* Project Title */}
         <Link href={`/projects/${id}`}>
-          <h3 className="text-xl font-semibold text-foreground relative inline-block group transition-colors duration-300 hover:text-blue-500">
+          <h3 className="text-xl font-semibold text-foreground relative inline-block group transition-colors duration-300 hover:text-blue-600">
             {title}
-            <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
+            <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
           </h3>
         </Link>
 
@@ -50,7 +50,7 @@ export default function ProjectCard({
           {tags.map((tag, i) => (
             <span
               key={i}
-              className="px-2 py-0.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs rounded-full transform transition group-hover:-translate-y-0.5"
+              className="px-2 py-0.5 bg-blue-900 text-white text-xs rounded-full transform transition group-hover:-translate-y-0.5"
             >
               {tag}
             </span>

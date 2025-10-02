@@ -9,7 +9,7 @@ import {
   SiMongoose,
 } from "react-icons/si";
 
-export default function TechStack() {
+export default function Skills() {
   const techs = [
     { name: "React", icon: <FaReact className="text-blue-500" /> },
     { name: "Next.js", icon: <SiNextdotjs className="text-foreground" /> },
@@ -26,8 +26,8 @@ export default function TechStack() {
     <section id="tech-stack" className="py-20 bg-background">
       <div className="container mx-auto px-6 lg:px-20">
         {/* Section Heading */}
-        <h2 className="text-4xl font-bold text-center text-foreground mb-12">
-          Tech Stack
+        <h2 className="text-3xl font-bold text-center text-foreground mb-12">
+          Skills
         </h2>
 
         {/* Tech Grid */}

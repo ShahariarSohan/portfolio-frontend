@@ -9,6 +9,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { Home,  FileText,Folder } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 
 const items = [
@@ -18,7 +19,7 @@ const items = [
 ];
 
 export function SidebarNav() {
-   
+   const pathName=usePathname()
      
   return (
     <SidebarGroup>
@@ -27,7 +28,7 @@ export function SidebarNav() {
         <SidebarMenu>
           {items.map((item) => (
             <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton asChild>
+              <SidebarMenuButton asChild className={pathName===item.url?"bg-sidebar-accent":""}>
                 <Link href={item.url} className="flex items-center gap-4">
                   <item.icon className="h-4 w-4" />
                   <span>{item.title}</span>
