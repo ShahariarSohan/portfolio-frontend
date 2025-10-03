@@ -5,7 +5,7 @@ import { IProject } from "@/types/project.type";
 export default async function ProjectsSection() {
   const res = await getAllProjects({
     cache: "no-store",
-    next: { tags: ["projectS"] },
+    next: { tags: ["PROJECTS"] },
   });
   const projects = res.data;
   return (
@@ -14,7 +14,7 @@ export default async function ProjectsSection() {
         <h2 className="text-3xl font-bold text-center text-foreground mb-12">
           Projects
         </h2>
-        {projects.length === 0 ? (
+        {projects && projects.length === 0 ? (
           <div className="min-h-screen flex justify-center">
             <h1 className="text-2xl font-semibold text-center">
               No Data Found
