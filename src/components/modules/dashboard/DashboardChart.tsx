@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import {
   BarChart,
@@ -10,14 +10,16 @@ import {
   ResponsiveContainer,
   Cell,
 } from "recharts";
+import { IPropsCount } from "./DashboardStats";
 
-const data = [
-  { name: "Projects", count: 45 },
-  { name: "Blogs", count: 30 },
-  { name: "Users", count: 0 },
-];
 
-export default function DashboardChart() {
+
+export default function DashboardChart({dataCount}:{dataCount:IPropsCount}) {
+  const data = [
+    { name: "Projects", count: dataCount.projectsCount ?? 0 },
+    { name: "Blogs", count: dataCount.blogsCount ?? 0 },
+    { name: "Users", count: 0 },
+  ];
   return (
     <div className="flex justify-center items-center w-full py-6 mt-5">
       <div className="w-[95%] sm:w-[85%] md:w-[70%] lg:w-[55%] xl:w-[600px] bg-card rounded-2xl p-4 shadow-md">

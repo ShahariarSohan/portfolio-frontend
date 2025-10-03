@@ -1,20 +1,24 @@
 // components/dashboard/DashboardStats.tsx
-"use client";
 
 import { Card, CardContent } from "@/components/ui/card";
-import { Users, FileText, Briefcase } from "lucide-react";
 
-export function DashboardStats() {
+import { Users, FileText, Briefcase } from "lucide-react";
+export interface IPropsCount{
+  projectsCount: number;
+  blogsCount:number
+}
+export async function DashboardStats({dataCount}:{dataCount:IPropsCount}) {
+  
   const stats = [
     {
       label: "Total Projects",
-      value: 8,
+      value: dataCount.projectsCount ?? 0,
       icon: Briefcase,
       color: "text-blue-500",
     },
     {
       label: "Total Blogs",
-      value: 15,
+      value: dataCount.blogsCount ?? 0,
       icon: FileText,
       color: "text-green-500",
     },
