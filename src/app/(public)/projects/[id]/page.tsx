@@ -1,10 +1,14 @@
 import ProjectDetails from "@/components/modules/project/ProjectDetails";
+import getSingleProject from "@/services/postServices/getSingleProject";
+import { IProject } from "@/types/project.type";
 
 export default async function DynamicProject({ params }: { params: Promise<{ id: string }> }) {
-    const { id } = await params;
+     const { id } = await params;
+     const res = await getSingleProject(Number(id));
+     const project: IProject = res.data;
   return (
     <div>
-      <ProjectDetails id={id}></ProjectDetails>
+      <ProjectDetails project={project}></ProjectDetails>
     </div>
   );
 }

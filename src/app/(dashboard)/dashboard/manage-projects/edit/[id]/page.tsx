@@ -1,20 +1,27 @@
+
 import EditProjectForm from "@/components/modules/project/EditProjectForm";
+import getSingleProject from "@/services/postServices/getSingleProject";
+import { IProject } from "@/types/project.type";
 
 
-export default function EditBlog() {
-  const initialBlogData = {
-    id: 1,
-    title: "Building a Portfolio with Next.js",
-    content:
-      "This is the full content of the blog post explaining how to build a portfolio with Next.js...",
-    thumbnail: "https://example.com/images/portfolio-thumbnail.jpg",
-    description: "A short description of building a Next.js portfolio.",
-    tags: ["nextjs", "react", "prisma"],
-  };
+export default async function EditBlog({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  const intId = Number(id);
+  const res = await getSingleProject(intId);
+  const initialProjectData: IProject = res.data;
 
   return (
     <div>
-      <EditProjectForm initialData={initialBlogData}></EditProjectForm>
+      <EditProjectForm initialData={initialProjectData} id={intId}></EditProjectForm>
     </div>
   );
 }
+
+
+
+
+

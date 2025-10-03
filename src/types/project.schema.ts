@@ -13,8 +13,7 @@ export const ProjectSchema = z.object({
     .or(z.literal("")), // allow empty string
   description: z
     .string()
-    .min(10, "Description must be at least 10 characters.")
-    .max(500, "Description too long."),
+    .min(10, "Description must be at least 10 characters."),
   githubLink: z
     .string()
     .url("GitHub link must be a valid URL.")

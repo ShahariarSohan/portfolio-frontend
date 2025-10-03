@@ -1,10 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, useFieldArray } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-
-
 
 import {
   Form,
@@ -17,23 +15,34 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { Plus, Trash2 } from "lucide-react";
 import { ProjectSchema, ProjectSchemaType } from "@/types/project.schema";
+import addProject from "@/actions/projectActions/addProject";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 export function AddProjectForm() {
-  // -------------------------------
-  // 🔹 Hooks & States
-  // -------------------------------
+  const router = useRouter();
+
   const form = useForm<ProjectSchemaType>({
     resolver: zodResolver(ProjectSchema),
     defaultValues: {
       title: "",
       thumbnail: "",
+      githubLink: "",
+      liveLink: "",
       description: "",
       tags: [],
+      features: [""], // 👈 ensures one field at start
     },
   });
 
   const [tagInput, setTagInput] = useState("");
+
+  const { fields, append, remove } = useFieldArray({
+    control: form.control,
+    name: "features",
+  });
 
   // -------------------------------
   // 🔹 Handlers
@@ -41,7 +50,6 @@ export function AddProjectForm() {
   const handleTagChange = (value: string) => {
     setTagInput(value);
 
-    // Split tags by commas, trim spaces
     const tags = value
       .split(",")
       .map((tag) => tag.trim())
@@ -50,9 +58,26 @@ export function AddProjectForm() {
     form.setValue("tags", tags);
   };
 
-  const onSubmit = (values: ProjectSchemaType) => {
-    console.log("✅ Blog data submitted:", values);
-    // You can send this to your API endpoint via fetch/axios
+  const onSubmit = async (values: ProjectSchemaType) => {
+    console.log(values);
+    try {
+      const res = await addProject(values);
+      console.log(res);
+      if (res.success) {
+        toast.success("Project added successfully");
+        router.push("/dashboard/manage-projects");
+      } else {
+        if (!res.success) {
+          if (res.message === "Title already exists") {
+            toast.error(res.message);
+          } else {
+            toast.error("Something went wrong");
+          }
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -69,7 +94,7 @@ export function AddProjectForm() {
               <FormItem>
                 <FormLabel>Title</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter blog title" {...field} />
+                  <Input placeholder="Enter project title" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -93,6 +118,40 @@ export function AddProjectForm() {
               </FormItem>
             )}
           />
+          {/* Github link */}
+          <FormField
+            control={form.control}
+            name="githubLink"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Github URL</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder="https://github.com/username/reponame"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          {/* Live link */}
+          <FormField
+            control={form.control}
+            name="liveLink"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Live URL</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder="https://example.com"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
           {/* Description */}
           <FormField
@@ -103,7 +162,7 @@ export function AddProjectForm() {
                 <FormLabel>Short Description</FormLabel>
                 <FormControl>
                   <Textarea
-                    placeholder="Briefly describe your blog..."
+                    placeholder="Briefly describe your project..."
                     rows={3}
                     {...field}
                   />
@@ -113,8 +172,53 @@ export function AddProjectForm() {
             )}
           />
 
-          {/* Content */}
-          
+          {/* ✅ Dynamic Features */}
+          <div className="space-y-3">
+            <FormLabel>Features</FormLabel>
+
+            <div className="space-y-2">
+              {fields.map((field, index) => (
+                <div key={field.id} className="flex items-center gap-2">
+                  <FormField
+                    control={form.control}
+                    name={`features.${index}`}
+                    render={({ field }) => (
+                      <FormItem className="flex-1">
+                        <FormControl>
+                          <Input
+                            placeholder={`Feature ${index + 1}`}
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  {/* Remove button (only if >1 feature) */}
+                  {fields.length > 1 && (
+                    <Button
+                      type="button"
+                      variant="destructive"
+                      size="icon"
+                      onClick={() => remove(index)}
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </Button>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* ➕ Add Feature Button */}
+            <Button
+              type="button"
+              variant="outline"
+              className="mt-2"
+              onClick={() => append("")}
+            >
+              <Plus className="w-4 h-4" />
+            </Button>
+          </div>
 
           {/* Tags */}
           <FormField

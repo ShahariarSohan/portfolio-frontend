@@ -2,7 +2,7 @@
 
 import { Skeleton } from "@/components/ui/skeleton";
 
-export function ManageBlogSkeletonCard() {
+export function ManageSkeletonCard() {
   return (
     <div className="w-full flex items-center justify-between gap-4 p-3 border rounded-md bg-card dark:bg-card-dark">
       {/* Thumbnail + Info */}

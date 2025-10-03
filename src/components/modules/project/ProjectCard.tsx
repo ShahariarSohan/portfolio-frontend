@@ -1,17 +1,11 @@
 // components/home/ProjectCard.tsx
+import { IProject } from "@/types/project.type";
 import Image from "next/image";
 import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
 import { HiOutlineLink } from "react-icons/hi";
 
-interface ProjectCardProps {
-  id: number;
-  title: string;
-  thumbnail: string;
-  tags: string[];
-  githubLink?: string;
-  liveLink?: string;
-}
+
 
 export default function ProjectCard({
   id,
@@ -20,7 +14,7 @@ export default function ProjectCard({
   tags,
   githubLink,
   liveLink,
-}: ProjectCardProps) {
+}: IProject) {
   return (
     <div className="group relative bg-muted rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-transform transform hover:-translate-y-1">
       {/* Project Thumbnail */}

@@ -1,80 +1,32 @@
+import { getAllProjects } from "@/services/postServices/getAllProjects";
 import ProjectCard from "./ProjectCard";
+import { IProject } from "@/types/project.type";
 
-
-
-
-const demoProjects = [
-  {
-    id: 1,
-    title: "Portfolio Website",
-    thumbnail: "/images/sohan.jpg",
-    tags: ["Next.js", "Tailwind", "React"],
-    githubLink: "https://github.com/demo/portfolio",
-    liveLink: "https://portfolio-demo.com",
-  },
-  {
-    id: 2,
-    title: "E-commerce App",
-    thumbnail: "/images/icon.png",
-    tags: ["MERN", "Prisma", "PostgreSQL"],
-    githubLink: "https://github.com/demo/ecommerce",
-    liveLink: "https://ecommerce-demo.com",
-  },
-  {
-    id: 3,
-    title: "E-commerce App",
-    thumbnail: "/images/icon.png",
-    tags: ["MERN", "Prisma", "PostgreSQL"],
-    githubLink: "https://github.com/demo/ecommerce",
-    liveLink: "https://ecommerce-demo.com",
-  },
-  {
-    id: 4,
-    title: "E-commerce App",
-    thumbnail: "/images/icon.png",
-    tags: ["MERN", "Prisma", "PostgreSQL"],
-    githubLink: "https://github.com/demo/ecommerce",
-    liveLink: "https://ecommerce-demo.com",
-  },
-  {
-    id: 5,
-    title: "E-commerce App",
-    thumbnail: "/images/icon.png",
-    tags: ["MERN", "Prisma", "PostgreSQL"],
-    githubLink: "https://github.com/demo/ecommerce",
-    liveLink: "https://ecommerce-demo.com",
-  },
-  {
-    id: 6,
-    title: "E-commerce App",
-    thumbnail: "/images/icon.png",
-    tags: ["MERN", "Prisma", "PostgreSQL"],
-    githubLink: "https://github.com/demo/ecommerce",
-    liveLink: "https://ecommerce-demo.com",
-  },
-  {
-    id: 7,
-    title: "E-commerce App",
-    thumbnail: "/images/icon.png",
-    tags: ["MERN", "Prisma", "PostgreSQL"],
-    githubLink: "https://github.com/demo/ecommerce",
-    liveLink: "https://ecommerce-demo.com",
-  },
-];
-
-export default function ProjectsSection() {
+export default async function ProjectsSection() {
+  const res = await getAllProjects({
+    cache: "no-store",
+    next: { tags: ["projectS"] },
+  });
+  const projects = res.data;
   return (
     <section id="projects" className="py-20 bg-background">
       <div className="container mx-auto px-6 lg:px-20">
         <h2 className="text-3xl font-bold text-center text-foreground mb-12">
           Projects
         </h2>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {demoProjects.map((project) => (
-            <ProjectCard key={project.id} {...project} />
-          ))}
-        </div>
+        {projects.length === 0 ? (
+          <div className="min-h-screen flex justify-center">
+            <h1 className="text-2xl font-semibold text-center">
+              No Data Found
+            </h1>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projects?.map((project: IProject) => (
+              <ProjectCard key={project.id} {...project} />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

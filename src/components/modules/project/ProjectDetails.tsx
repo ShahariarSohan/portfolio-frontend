@@ -2,31 +2,14 @@ import Image from "next/image";
 import { FaGithub } from "react-icons/fa";
 import { HiOutlineLink } from "react-icons/hi";
 import { notFound } from "next/navigation";
+import { IProject } from "@/types/project.type";
 
-// Temporary demo data (replace with server fetch)
-const demoProjects = [
-  {
-    id: 1,
-    title: "Portfolio Website",
-    thumbnail: "/images/sohan.jpg",
-    description:
-            "A personal portfolio website built with Next.js, ShadCN, and Tailwind CSS. It showcases my professional journey, technical skills, and featured projects with an elegant dark/light mode toggle.A personal portfolio website built with Next.js, ShadCN, and Tailwind CSS. It showcases my professional journey, technical skills, and featured projects with an elegant dark/light mode toggle.A personal portfolio website built with Next.js, ShadCN, and Tailwind CSS. It showcases my professional journey, technical skills, and featured projects with an elegant dark/light mode toggle.A personal portfolio website built with Next.js, ShadCN, and Tailwind CSS. It showcases my professional journey, technical skills, and featured projects with an elegant dark/light mode toggle.",
-    githubLink: "https://github.com/demo/portfolio",
-    liveLink: "https://portfolio-demo.com",
-    features: [
-      "Next.js 14 App Router",
-      "Server Components & SSR",
-      "Dynamic routing for project pages",
-      "ShadCN UI dark/light mode",
-      "Responsive Tailwind design",
-    ],
-    tags: ["Next.js", "React", "TypeScript", "ShadCN", "TailwindCSS"],
-  },
-];
 
-export default async function ProjectDetails({ id }:{id:string}
+
+
+export default async function ProjectDetails({project }:{project:IProject}
 ) {
-  const project = demoProjects.find((p) => p.id === Number(id));
+  
 
   if (!project) return notFound();
 
