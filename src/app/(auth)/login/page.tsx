@@ -1,4 +1,4 @@
-import { GoHomeButton } from "@/components/modules/auth/GoHomeButton";
+import { GoHomeButton } from "@/components/shared/Button/GoHomeButton";
 import LoginForm from "@/components/modules/auth/LoginForm";
 
 export default function LoginPage() {

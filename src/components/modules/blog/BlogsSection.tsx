@@ -14,8 +14,8 @@ export default async function BlogsSection() {
         <h2 className="text-4xl font-bold text-center text-foreground mb-12">
           Blogs
         </h2>
-        {blogs.length === 0 ? (
-          <div className="min-h-screen flex justify-center">
+        {!blogs ? (
+          <div className="min-h-[200px] flex justify-center">
             <h1 className="text-2xl font-semibold text-center">
               No Data Found
             </h1>
