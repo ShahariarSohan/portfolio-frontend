@@ -1,19 +1,17 @@
-"use client"
+"use client";
 
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-
-
 export default function LoginButton() {
   return (
-    <Button
-      variant="outline"
-      className="font-medium bg-transparent border-border text-foreground hover:bg-accent"
-    >
-      <Link href="/login" className="w-full text-center">
+    <Link href="/login" className="w-full text-center">
+      <Button
+        variant="outline"
+        className="font-medium bg-transparent border-border text-foreground hover:bg-accent"
+      >
         Login
-      </Link>
-    </Button>
+      </Button>
+    </Link>
   );
 }
