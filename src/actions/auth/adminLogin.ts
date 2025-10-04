@@ -1,8 +1,10 @@
 "use server";
 
-import { FieldValues } from "react-hook-form";
+import { LoginSchemaType } from "@/types/LoginSchema";
 
-export const adminLogin = async (data: FieldValues) => {
+
+
+export const adminLogin = async (data: LoginSchemaType) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
     method: "POST",
     headers: {

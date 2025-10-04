@@ -8,14 +8,19 @@ import NavLink from "./NavLink";
 import LoginButton from "../Button/LoginButton";
 
 
+import getAdminSession from "@/helpers/getAdminSession";
+import LogoutButtonNavbar from "../Button/LogoutButton";
 
-export function Navbar() {
+
+
+export async function Navbar() {
+  const session= await getAdminSession()
  
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "Blogs", href: "/blogs" },
     { name: "Projects", href: "/projects" },
-    { name: "Dashboard", href: "/dashboard" },
+    { name: `${session?"Dashboard":""}`, href: "/dashboard" },
   ];
 
   return (
@@ -30,10 +35,7 @@ export function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
-              <NavLink
-                key={link.name}
-                href={link.href}
-              >
+              <NavLink key={link.name} href={link.href}>
                 {link.name}
               </NavLink>
             ))}
@@ -42,7 +44,8 @@ export function Navbar() {
           {/* Right Side */}
           <div className="flex items-center space-x-2">
             <ModeToggle />
-            <LoginButton />
+            {session ? <LogoutButtonNavbar></LogoutButtonNavbar> : <LoginButton />}
+
             {/* Mobile Menu (Client Component) */}
             <MobileMenu navLinks={navLinks} />
           </div>

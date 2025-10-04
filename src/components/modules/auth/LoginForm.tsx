@@ -18,7 +18,9 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { LoginSchema, LoginSchemaType } from "@/types/LoginSchema";
-
+import { signIn } from "next-auth/react";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 // -------------------------
 // 🔹 Schema for Validation
 // -------------------------
@@ -28,7 +30,7 @@ import { LoginSchema, LoginSchemaType } from "@/types/LoginSchema";
 
 export default function LoginForm() {
   
-
+const router=useRouter()
   const form = useForm<LoginSchemaType>({
     resolver: zodResolver(LoginSchema),
     defaultValues: {
@@ -38,14 +40,28 @@ export default function LoginForm() {
   });
 
   const onSubmit = async (values: LoginSchemaType) => {
-    console.log("🔐 Login attempt:", values);
+    console.log("🔐 Login values:", values);
+   try {
+     const res = await signIn("credentials", {
+       ...values,
+       redirect: false,
+     });
 
-    // Example of backend login call
-    // const res = await loginUser(values);
-    // if (res.success) router.push("/dashboard");
+     if (res?.error) {
+       toast.error("Invalid email or password");
+       return;
+     }
 
-    // For now, simulate login success
- 
+     if (res?.ok) {
+       toast.success("Login successful");
+       router.push("/dashboard");
+     }
+   } catch (err) {
+     // This only runs for *unexpected* or network-level failures
+     console.error("Unexpected error during login:", err);
+     toast.error("Something went wrong. Please try again.");
+   }
+   
   };
 
   return (

@@ -1,21 +1,21 @@
 "use client";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+
 import {
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
 } from "@/components/ui/sidebar";
-import { Button } from "@/components/ui/button";
-import { ArrowLeft, LogOut } from "lucide-react";
+
+import { ArrowLeft } from "lucide-react";
 import { ModeToggle } from "@/components/shared/navbar/ModeToggle";
+import LogoutButtonDashboard from "@/components/shared/Button/LogoutButtonDashboard";
+
 
 export function SidebarBottom() {
-  const router = useRouter();
 
-  const handleLogout = () => {
-    router.push("/");
-  };
+
+ 
 
   return (
     <div className="border-t border-border p-5 space-y-2">
@@ -33,14 +33,7 @@ export function SidebarBottom() {
           <ModeToggle />
         </div>
         <SidebarMenuItem>
-          <Button
-            variant="destructive"
-            className="w-full flex items-center justify-center gap-2"
-            onClick={handleLogout}
-          >
-            <LogOut className="h-4 w-4" />
-            Logout
-          </Button>
+          <LogoutButtonDashboard></LogoutButtonDashboard>
         </SidebarMenuItem>
       </SidebarMenu>
     </div>
