@@ -3,7 +3,7 @@
 
 import { useEffect } from "react";
 import { AlertCircle } from "lucide-react";
-import { useRouter } from "next/navigation";
+
 
 interface GlobalErrorProps {
   error: Error;

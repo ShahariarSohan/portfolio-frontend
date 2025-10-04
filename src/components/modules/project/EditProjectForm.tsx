@@ -1,6 +1,6 @@
 "use client";
 
-import { useFieldArray, useForm } from "react-hook-form";
+import { FieldValues, useFieldArray, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import {
@@ -45,11 +45,11 @@ export default function EditProjectForm({
       description: initialData.description ?? "",
       features: initialData.features ?? [""],
       tags: initialData.tags ?? [],
-    } 
+    }
   });
 
   const [tagInput, setTagInput] = useState(initialData.tags?.join(", ") || "");
-  const { fields, append, remove } = useFieldArray({
+  const { fields, append, remove } = useFieldArray<FieldValues>({
     control: form.control,
     name: "features",
   });

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useState } from "react";
@@ -39,7 +40,7 @@ export function AddProjectForm() {
 
   const [tagInput, setTagInput] = useState("");
 
-  const { fields, append, remove } = useFieldArray({
+  const { fields, append, remove } = useFieldArray<any>({
     control: form.control,
     name: "features",
   });

@@ -9,7 +9,8 @@ import LoginButton from "../Button/LoginButton";
 
 
 import getAdminSession from "@/helpers/getAdminSession";
-import LogoutButtonNavbar from "../Button/LogoutButton";
+import LogoutButtonNavbar from "../Button/LogoutButtonNavbar";
+
 
 
 

@@ -37,7 +37,6 @@ export const authOptions: NextAuthOptions = {
         };
         try {
           const res = await adminLogin(data);
-          console.log("Next auth res", res);
           if (!res.success) {
             const errorMessage = await res.text();
             throw new Error(errorMessage || "Login failed");

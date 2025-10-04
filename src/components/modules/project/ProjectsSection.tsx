@@ -14,7 +14,7 @@ export default async function ProjectsSection() {
         <h2 className="text-3xl font-bold text-center text-foreground mb-12">
           Projects
         </h2>
-        {!projects ? (
+        {(!projects||projects&&projects.length===0) ? (
           <div className="min-h-[200px] flex justify-center">
             <h1 className="text-2xl font-semibold text-center">
               No Data Found
