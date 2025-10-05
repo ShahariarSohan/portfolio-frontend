@@ -20,7 +20,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { LoginSchema, LoginSchemaType } from "@/types/LoginSchema";
 import { signIn } from "next-auth/react";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
+
 // -------------------------
 // 🔹 Schema for Validation
 // -------------------------
@@ -30,7 +30,7 @@ import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
   
-const router=useRouter()
+
   const form = useForm<LoginSchemaType>({
     resolver: zodResolver(LoginSchema),
     defaultValues: {
@@ -44,7 +44,8 @@ const router=useRouter()
    try {
      const res = await signIn("credentials", {
        ...values,
-       redirect: false,
+       redirect: true,
+       callbackUrl:"/dashboard"
      });
 
      if (res?.error) {
@@ -52,10 +53,6 @@ const router=useRouter()
        return;
      }
 
-     if (res?.ok) {
-       toast.success("Login successful");
-       router.push("/dashboard");
-     }
    } catch (err) {
      // This only runs for *unexpected* or network-level failures
      console.error("Unexpected error during login:", err);

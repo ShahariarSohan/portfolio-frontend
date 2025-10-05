@@ -2,7 +2,6 @@ import { adminLogin } from "@/actions/auth/adminLogin";
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-
 declare module "next-auth" {
   interface Session {
     user: {
@@ -42,7 +41,6 @@ export const authOptions: NextAuthOptions = {
             throw new Error(errorMessage || "Login failed");
           }
           const user = res.data;
-          console.log("Next auth user", user);
           if (user) {
             return {
               id: user?.id,
@@ -76,5 +74,8 @@ export const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
   pages: {
     signIn: "/login",
+  },
+  session: {
+    strategy: "jwt",
   },
 };

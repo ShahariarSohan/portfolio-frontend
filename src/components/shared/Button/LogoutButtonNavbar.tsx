@@ -4,10 +4,14 @@ import { Button } from "@/components/ui/button";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
 
+
+
 export default function LogoutButtonNavbar() {
  
+ 
   const handleLogout = async () => {
-    await signOut({ redirect: false });
+    await signOut({ redirect: true,callbackUrl:"/login" });
+    
   };
   return (
     <Link href="/login" className="w-full text-center">

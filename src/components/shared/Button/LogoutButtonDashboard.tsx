@@ -1,14 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { LogOut } from "lucide-react";
 import { signOut } from "next-auth/react";
-import { useRouter } from "next/navigation";
 
 export default function LogoutButtonDashboard() {
-      const router = useRouter();
+      
       const handleLogout = async () => {
         try {
-          await signOut({ redirect: false }); // stop default redirect
-          router.push("/"); // manual SPA navigation
+          await signOut({ redirect: true,callbackUrl:"/" });
+          // manual SPA navigation
         } catch (err) {
           console.error("Logout failed:", err);
         }
