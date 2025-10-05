@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -18,8 +18,11 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { LoginSchema, LoginSchemaType } from "@/types/LoginSchema";
-import { signIn } from "next-auth/react";
+import { signIn} from "next-auth/react";
 import { toast } from "sonner";
+import { useSearchParams } from "next/navigation";
+
+
 
 // -------------------------
 // 🔹 Schema for Validation
@@ -29,8 +32,16 @@ import { toast } from "sonner";
 
 
 export default function LoginForm() {
-  
+  const searchParams = useSearchParams();
 
+  useEffect(() => {
+    if (typeof window === "undefined") return; // prevents server-side execution
+    const error = searchParams.get("error");
+    if (error === "CredentialsSignin") {
+      toast.error("Invalid email or password");
+    }
+  }, [searchParams]);
+  
   const form = useForm<LoginSchemaType>({
     resolver: zodResolver(LoginSchema),
     defaultValues: {
@@ -42,16 +53,11 @@ export default function LoginForm() {
   const onSubmit = async (values: LoginSchemaType) => {
     console.log("🔐 Login values:", values);
    try {
-     const res = await signIn("credentials", {
+      await signIn("credentials", {
        ...values,
-       redirect: true,
+        redirect: true,
        callbackUrl:"/dashboard"
      });
-
-     if (res?.error) {
-       toast.error("Invalid email or password");
-       return;
-     }
 
    } catch (err) {
      // This only runs for *unexpected* or network-level failures
