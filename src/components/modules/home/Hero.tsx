@@ -9,12 +9,12 @@ export function Hero() {
           <div className="space-y-8 text-center lg:text-left">
             <div className="space-y-4">
               <h1 className="text-3xl  font-bold text-balance leading-tight text-foreground">
-                Here is Shahariar Sohan.
+                Shahariar Sohan.
                 <br />
                 <span className="text-foreground">MERN Stack Developer</span>
               </h1>
               <p className=" text-foreground max-w-2xl mx-auto lg:mx-0">
-                Passionate about database,server and scalable systems
+                Passionate about databases, servers, and scalable systems
               </p>
             </div>
           </div>
@@ -51,11 +51,11 @@ export function Hero() {
           <h3 className="text-sm font-medium text-foreground uppercase tracking-wider">
             Phone
           </h3>
-          <p className="text-foreground font-semibold">+10 (67) 367-9034</p>
+          <p className="text-foreground font-semibold">+880 1622 143630</p>
         </div>
         <div className="space-y-2">
           <h3 className="text-sm font-medium text-foreground uppercase tracking-wider">
-            Drop your Message
+            Drop me an email
           </h3>
           <p className="text-foreground font-semibold">
             sohanshahariar4@gmail.com
