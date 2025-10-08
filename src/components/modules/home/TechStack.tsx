@@ -1,5 +1,5 @@
 // components/home/TechStack.tsx
-import { FaReact, FaNodeJs, FaServer } from "react-icons/fa";
+import { FaReact, FaNodeJs, FaServer, FaJsSquare } from "react-icons/fa";
 import {
   SiNextdotjs,
   SiMongodb,
@@ -7,27 +7,30 @@ import {
   SiPrisma,
   SiTypescript,
   SiMongoose,
+  SiTailwindcss,
 } from "react-icons/si";
 
-export default function Skills() {
-  const techs = [
-    { name: "React", icon: <FaReact className="text-blue-500" /> },
-    { name: "Next.js", icon: <SiNextdotjs className="text-foreground" /> },
-    { name: "Node.js", icon: <FaNodeJs className="text-green-600" /> },
-    { name: "TypeScript", icon: <SiTypescript className="text-blue-600" /> },
-    { name: "MongoDB", icon: <SiMongodb className="text-green-500" /> },
-    { name: "Mongoose", icon: <SiMongoose className="text-red-700" /> },
-    { name: "PostgreSQL", icon: <SiPostgresql className="text-blue-700" /> },
-    { name: "Prisma", icon: <SiPrisma className="text-gray-700" /> },
-    { name: "Express.js", icon: <FaServer className="text-foreground" /> },
-  ];
+export default function TechStack() {
+ const techs = [
+   { name: "JavaScript", icon: <FaJsSquare className="text-yellow-400" /> },
+   { name: "TypeScript", icon: <SiTypescript className="text-blue-600" /> },
+   { name: "React", icon: <FaReact className="text-blue-500" /> },
+   { name: "Next.js", icon: <SiNextdotjs className="text-foreground" /> },
+   { name: "Node.js", icon: <FaNodeJs className="text-green-600" /> },
+   { name: "Express.js", icon: <FaServer className="text-foreground" /> },
+   { name: "MongoDB", icon: <SiMongodb className="text-green-500" /> },
+   { name: "Mongoose", icon: <SiMongoose className="text-red-700" /> },
+   { name: "PostgreSQL", icon: <SiPostgresql className="text-blue-700" /> },
+   { name: "Prisma", icon: <SiPrisma className="text-gray-700" /> },
+   { name: "Tailwind CSS", icon: <SiTailwindcss className="text-sky-500" /> },
+ ];
 
   return (
     <section id="tech-stack" className="py-20 bg-background">
       <div className="container mx-auto px-6 lg:px-20">
         {/* Section Heading */}
         <h2 className="text-3xl font-bold text-center text-foreground mb-12">
-          Skills
+          Tech Stack
         </h2>
 
         {/* Tech Grid */}
