@@ -71,11 +71,28 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
   },
+  session: {
+    strategy: "jwt", // Use JWT for session
+    maxAge: 60 * 60, // 1 hour
+  },
+
+  jwt: {
+    maxAge: 60 * 60, // 1 hour
+  },
+
+  cookies: {
+    sessionToken: {
+      name: "__Secure-next-auth.session-token",
+      options: {
+        httpOnly: true, // Not accessible via JS (prevents XSS)
+        sameSite: "none", // Allow cross-domain (frontend + backend different)
+        secure: true, // Must be HTTPS
+        path: "/", // Available site-wide
+      },
+    },
+  },
   secret: process.env.NEXTAUTH_SECRET,
   pages: {
     signIn: "/login",
-  },
-  session: {
-    strategy: "jwt",
-  },
+  }
 };

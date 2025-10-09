@@ -8,7 +8,6 @@ export default async function BlogsSection() {
     next: { tags: ["BLOGS"] },
   });
   const blogs = res.data;
-  console.log(blogs)
   return (
     <section id="blogs" className="py-10 bg-background">
       <div className="container mx-auto px-6 lg:px-20">
