@@ -3,12 +3,17 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
+
 
 interface MobileMenuProps {
   navLinks: { name: string; href: string }[];
 }
 
-export function MobileMenu({ navLinks }: MobileMenuProps) {
+export  function MobileMenu({ navLinks }: MobileMenuProps) {
+  
+   const pathname = usePathname();
+    
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -32,7 +37,11 @@ export function MobileMenu({ navLinks }: MobileMenuProps) {
               <Link
                 key={link.name}
                 href={link.href}
-                className="block text-muted-foreground hover:text-primary transition-colors font-medium"
+                className={
+                  pathname===link.href
+                    ? "block text-muted-foreground hover:text-primary transition-colors duration-200 font-bold underline"
+                    : "block text-muted-foreground hover:text-primary transition-colors duration-200 font-medium"
+                }
                 onClick={() => setIsOpen(false)}
               >
                 {link.name}
