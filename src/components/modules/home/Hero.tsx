@@ -53,7 +53,7 @@ export function Hero() {
         </div>
       </div>
       {/* Contact Info */}
-      <div className="grid md:grid-cols-3 gap-6 mt-20">
+      <div className="grid md:grid-cols-3 gap-6 mt-20 text-center md:text-start">
         <div className="space-y-2">
           <h3 className="text-sm font-medium text-foreground uppercase tracking-wider">
             Work For
