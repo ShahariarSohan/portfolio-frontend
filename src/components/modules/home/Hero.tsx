@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button";
+import { Download } from "lucide-react";
 import Image from "next/image";
 
 export function Hero() {
@@ -17,8 +19,19 @@ export function Hero() {
                 Passionate about databases, servers, and scalable systems
               </p>
             </div>
+            <div className="flex justify-center lg:justify-start">
+              <Button
+                asChild
+                className="gap-2 transition-transform hover:scale-105"
+              >
+                <a href="/resume.pdf" download>
+                  <Download className="w-4 h-4" />
+                  Download Resume
+                </a>
+              </Button>
+            </div>
           </div>
-
+          
           {/* Profile Image - Right Side */}
           <div className="flex justify-center lg:justify-end">
             <div className="relative">
