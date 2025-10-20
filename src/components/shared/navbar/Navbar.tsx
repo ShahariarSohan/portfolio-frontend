@@ -49,7 +49,7 @@ export async function Navbar() {
           </div>
 
           {/* Right Side */}
-          <div className="flex items-center justify-center space-x-4">
+          <div className="flex items-center justify-center space-x-3">
             <div className="hidden md:block"><AnimatedThemeToggler></AnimatedThemeToggler></div>
             {session ? (
               <LogoutButtonNavbar></LogoutButtonNavbar>
