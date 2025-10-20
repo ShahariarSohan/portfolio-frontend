@@ -8,8 +8,9 @@ import {
 } from "@/components/ui/sidebar";
 
 import { ArrowLeft } from "lucide-react";
-import { ModeToggle } from "@/components/shared/navbar/ModeToggle";
+
 import LogoutButtonDashboard from "@/components/shared/Button/LogoutButtonDashboard";
+import { AnimatedThemeToggler } from "@/components/shared/navbar/animated-theme-toggler";
 
 
 export function SidebarBottom() {
@@ -30,7 +31,7 @@ export function SidebarBottom() {
         </SidebarMenuItem>
         <div className="flex items-center justify-between  rounded-md    cursor-pointer ">
           <span className="text-sm font-medium">Select Theme</span>
-          <ModeToggle />
+          <AnimatedThemeToggler></AnimatedThemeToggler>
         </div>
         <SidebarMenuItem>
           <LogoutButtonDashboard></LogoutButtonDashboard>

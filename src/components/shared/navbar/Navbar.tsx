@@ -3,13 +3,14 @@ import Link from "next/link";
 
 
 import { MobileMenu } from "@/components/shared/navbar/MobileMenu";
-import { ModeToggle } from "@/components/shared/navbar/ModeToggle";
+
 import NavLink from "./NavLink";
 import LoginButton from "../Button/LoginButton";
 
 
 import getAdminSession from "@/helpers/getAdminSession";
 import LogoutButtonNavbar from "../Button/LogoutButtonNavbar";
+import { AnimatedThemeToggler } from "./animated-theme-toggler";
 
 
 
@@ -48,8 +49,8 @@ export async function Navbar() {
           </div>
 
           {/* Right Side */}
-          <div className="flex items-center space-x-2">
-            <div className="hidden md:block"><ModeToggle/></div>
+          <div className="flex items-center justify-center space-x-4">
+            <div className="hidden md:block"><AnimatedThemeToggler></AnimatedThemeToggler></div>
             {session ? (
               <LogoutButtonNavbar></LogoutButtonNavbar>
             ) : (
