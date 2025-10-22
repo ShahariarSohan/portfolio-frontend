@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
-import { AnimatedThemeToggler } from "./animated-theme-toggler";
+
 
 
 
@@ -49,7 +49,6 @@ export  function MobileMenu({ navLinks }: MobileMenuProps) {
                 {link.name}
               </Link>
             ))}
-            <AnimatedThemeToggler></AnimatedThemeToggler>
           </div>
         </div>
       )}

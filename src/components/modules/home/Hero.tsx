@@ -1,5 +1,7 @@
-import { Button } from "@/components/ui/button";
-import { Download } from "lucide-react";
+
+import { ShinyButton } from "@/components/ui/shiny-button";
+import { TextAnimate } from "@/components/ui/text-animate";
+
 import Image from "next/image";
 
 export function Hero() {
@@ -11,27 +13,32 @@ export function Hero() {
           <div className="space-y-8 text-center lg:text-left">
             <div className="space-y-4">
               <h1 className="text-3xl  font-bold text-balance leading-tight text-foreground">
-                Shahariar Sohan.
-                <br />
-                <span className="text-foreground">MERN Stack Developer</span>
+                <TextAnimate animation="slideLeft" by="character">
+                  Shahariar Sohan.
+                </TextAnimate>
+                <span className="text-foreground">
+                  <TextAnimate animation="slideLeft" by="character">
+                    MERN Stack Developer
+                  </TextAnimate>
+                </span>
               </h1>
               <p className=" text-foreground max-w-2xl mx-auto lg:mx-0">
                 Passionate about databases, servers, and scalable systems
               </p>
             </div>
             <div className="flex justify-center lg:justify-start">
-              <Button
-                asChild
-                className="gap-2 transition-transform hover:scale-105"
-              >
-                <a href="/resume.pdf" download>
-                  <Download className="w-4 h-4" />
+              <ShinyButton className="gap-2">
+                <a
+                  href="/resume.pdf"
+                  download
+                  className="flex items-center gap-2"
+                >
                   Download Resume
                 </a>
-              </Button>
+              </ShinyButton>
             </div>
           </div>
-          
+
           {/* Profile Image - Right Side */}
           <div className="flex justify-center lg:justify-end">
             <div className="relative">
