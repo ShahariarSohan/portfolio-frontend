@@ -1,25 +1,20 @@
-"use client";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 interface NavLinkProps {
   href: string;
   children: React.ReactNode;
+  className?: string;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>; // ✅ this is the correct type
 }
 
-export default function NavLink({ href, children }: NavLinkProps) {
-  const pathname = usePathname();
-  const isActive = pathname === href;
-
+export default function NavLink({
+  href,
+  children,
+  className,
+  onClick,
+}: NavLinkProps) {
   return (
-    <Link
-      href={href}
-      className={
-        isActive
-          ? "text-muted-foreground hover:text-primary transition-colors duration-200 font-bold underline"
-          : "text-muted-foreground hover:text-primary transition-colors duration-200 font-medium"
-      }
-    >
+    <Link href={href} className={className} onClick={onClick}>
       {children}
     </Link>
   );

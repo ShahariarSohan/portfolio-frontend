@@ -1,57 +1,64 @@
 import Link from "next/link";
-
-import { MobileMenu } from "@/components/shared/navbar/MobileMenu";
-
-import NavLink from "./NavLink";
-
-import getAdminSession from "@/helpers/getAdminSession";
-
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+} from "@/components/ui/navigation-menu";
 import { AnimatedThemeToggler } from "./animated-theme-toggler";
+import NavLink from "./NavLink";
+import getAdminSession from "@/helpers/getAdminSession";
+import MobileMenuPopover from "./MobileMenu";
 
-export async function Navbar() {
+
+export default async function Navbar() {
   const session = await getAdminSession();
-  console.log(session)
 
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "Projects", href: "/projects" },
     { name: "Blogs", href: "/blogs" },
-    { name: `${session ? "Dashboard" : ""}`, href: "/dashboard" },
+    ...(session ? [{ name: "Dashboard", href: "/dashboard" }] : []),
   ];
 
   return (
-    <nav className="top-0 left-0 right-0 z-50 bg-gradient-to-br from-background via-muted/40 to-accent/30 border-b border-border/50 backdrop-blur-md">
-      <div className="max-w-7xl mx-auto px-3 md:px-6 xl:px-0">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
+    <header className="px-4 container mx-auto">
+      <div className="flex h-16 items-center justify-between gap-4 relative">
+        {/* === Left Side === */}
+        <div className="flex items-center gap-2">
+          <Link href="/" className="text-xl font-bold">
+            Sohan.
+          </Link>
+        </div>
 
-          <div className="flex items-center space-x-2">
-            <Link href="/" className="text-xl font-bold text-foreground">
-              Sohan.
-            </Link>
+        {/* === Centered Desktop Navigation === */}
+        <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden lg:block">
+          <NavigationMenu>
+            <NavigationMenuList className="flex gap-6">
+              {navLinks.map((link) => (
+                <NavigationMenuItem key={link.name}>
+                  <NavigationMenuLink asChild>
+                    <NavLink href={link.href}>{link.name}</NavLink>
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+              ))}
+            </NavigationMenuList>
+          </NavigationMenu>
+        </div>
+
+        {/* === Right Side === */}
+        <div className="flex items-center gap-3 ml-auto">
+          {/* Theme Toggler (visible only lg+) */}
+          <div className="hidden lg:block">
+            <AnimatedThemeToggler />
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <NavLink key={link.name} href={link.href}>
-                {link.name}
-              </NavLink>
-            ))}
-          </div>
-
-          {/* Right Side */}
-          <div className="flex items-center justify-center space-x-3">
-            <div className="hidden lg:block">
-              <AnimatedThemeToggler></AnimatedThemeToggler>
-            </div>
-            {/* Mobile Menu (Client Component) */}
-            <div className="lg:hidden">
-              <MobileMenu navLinks={navLinks} />
-            </div>
+          {/* Mobile Menu (Client Component) */}
+          <div className="block lg:hidden">
+            <MobileMenuPopover navLinks={navLinks} />
           </div>
         </div>
       </div>
-    </nav>
+    </header>
   );
 }
