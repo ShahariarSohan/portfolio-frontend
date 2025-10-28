@@ -22,6 +22,7 @@ export default function ProjectCard({
         <Image
           src={thumbnail}
           alt={title}
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-105 group-hover:brightness-90"
         />

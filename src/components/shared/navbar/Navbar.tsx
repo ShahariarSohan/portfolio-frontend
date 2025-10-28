@@ -1,28 +1,22 @@
-
 import Link from "next/link";
-
 
 import { MobileMenu } from "@/components/shared/navbar/MobileMenu";
 
 import NavLink from "./NavLink";
 
-
-
 import getAdminSession from "@/helpers/getAdminSession";
 
 import { AnimatedThemeToggler } from "./animated-theme-toggler";
 
-
-
-
 export async function Navbar() {
-  const session= await getAdminSession()
- 
+  const session = await getAdminSession();
+  console.log(session)
+
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "Blogs", href: "/blogs" },
     { name: "Projects", href: "/projects" },
-    { name: `${session?"Dashboard":""}`, href: "/dashboard" },
+    { name: `${session ? "Dashboard" : ""}`, href: "/dashboard" },
   ];
 
   return (
@@ -32,8 +26,6 @@ export async function Navbar() {
           {/* Logo */}
 
           <div className="flex items-center space-x-2">
-            {/* Mobile Menu (Client Component) */}
-            <MobileMenu navLinks={navLinks} />
             <Link href="/" className="text-xl font-bold text-foreground">
               Sohan.
             </Link>
@@ -50,7 +42,13 @@ export async function Navbar() {
 
           {/* Right Side */}
           <div className="flex items-center justify-center space-x-3">
-            <div className=""><AnimatedThemeToggler></AnimatedThemeToggler></div>
+            <div className="hidden lg:block">
+              <AnimatedThemeToggler></AnimatedThemeToggler>
+            </div>
+            {/* Mobile Menu (Client Component) */}
+            <div className="lg:hidden">
+              <MobileMenu navLinks={navLinks} />
+            </div>
           </div>
         </div>
       </div>

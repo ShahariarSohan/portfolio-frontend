@@ -27,6 +27,7 @@ export default function BlogCard({
           src={thumbnail}
           alt={title}
           fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
           className="object-cover group-hover:scale-[1.03] transition-transform duration-500"
         />
       </div>
@@ -70,7 +71,6 @@ export default function BlogCard({
         <div className="flex items-center gap-1 text-xs text-muted-foreground pt-2">
           <Calendar size={14} />
           <span>Created: {new Date(createdAt!).toLocaleDateString()}</span>
-          
         </div>
       </div>
     </div>
