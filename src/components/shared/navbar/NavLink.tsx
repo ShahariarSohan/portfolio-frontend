@@ -1,10 +1,13 @@
+"use client"; // required for usePathname
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface NavLinkProps {
   href: string;
   children: React.ReactNode;
   className?: string;
-  onClick?: React.MouseEventHandler<HTMLAnchorElement>; // ✅ this is the correct type
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
+  activeClassName?: string; // optional class for active link
 }
 
 export default function NavLink({
@@ -12,9 +15,21 @@ export default function NavLink({
   children,
   className,
   onClick,
+  activeClassName = "text-primary bg-muted", // default active styles
 }: NavLinkProps) {
+  const pathname = usePathname();
+  const isActive = pathname === href;
+
   return (
-    <Link href={href} className={className} onClick={onClick}>
+    <Link
+      href={href}
+      onClick={onClick}
+      className={`
+        ${className ?? ""}
+        ${isActive ? activeClassName : ""}
+        hover:text-accent transition-colors duration-200
+      `}
+    >
       {children}
     </Link>
   );

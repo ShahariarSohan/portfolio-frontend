@@ -10,7 +10,6 @@ import NavLink from "./NavLink";
 import getAdminSession from "@/helpers/getAdminSession";
 import MobileMenuPopover from "./MobileMenu";
 
-
 export default async function Navbar() {
   const session = await getAdminSession();
 
