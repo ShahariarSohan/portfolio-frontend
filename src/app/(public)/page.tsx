@@ -13,8 +13,8 @@ export default function Home() {
       <Hero></Hero>
       <AboutMe></AboutMe>
       <TechStack></TechStack>
-      <Experience></Experience>
       <ProjectsSection></ProjectsSection>
+      <Experience></Experience>
     </div>
   );
 }
