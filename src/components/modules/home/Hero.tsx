@@ -29,7 +29,7 @@ export function Hero() {
             <div className="flex justify-center lg:justify-start">
               <ShinyButton className="gap-2">
                 <a
-                  href="/resume.pdf"
+                  href="/Shahariar-Sohan-Resume.pdf"
                   download
                   className="flex items-center gap-2"
                 >
