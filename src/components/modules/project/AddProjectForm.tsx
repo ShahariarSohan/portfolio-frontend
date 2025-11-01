@@ -30,11 +30,14 @@ export function AddProjectForm() {
     defaultValues: {
       title: "",
       thumbnail: "",
-      githubLink: "",
-      liveLink: "",
+      frontendRepo: "",
+      frontendLive: "",
+      backendRepo: "",
+      backendLive: "",
       description: "",
+      caseStudy: "",
       tags: [],
-      features: [""], // 👈 ensures one field at start
+      features: [""],
     },
   });
 
@@ -45,9 +48,6 @@ export function AddProjectForm() {
     name: "features",
   });
 
-  // -------------------------------
-  // 🔹 Handlers
-  // -------------------------------
   const handleTagChange = (value: string) => {
     setTagInput(value);
 
@@ -63,21 +63,15 @@ export function AddProjectForm() {
     console.log(values);
     try {
       const res = await addProject(values);
-      console.log(res);
       if (res.success) {
         toast.success("Project added successfully");
         router.push("/dashboard/manage-projects");
       } else {
-        if (!res.success) {
-          if (res.message === "Title already exists") {
-            toast.error(res.message);
-          } else {
-            toast.error("Something went wrong");
-          }
-        }
+        toast.error(res.message || "Something went wrong");
       }
     } catch (err) {
       console.log(err);
+      toast.error("An error occurred");
     }
   };
 
@@ -119,16 +113,17 @@ export function AddProjectForm() {
               </FormItem>
             )}
           />
-          {/* Github link */}
+
+          {/* Frontend Repo */}
           <FormField
             control={form.control}
-            name="githubLink"
+            name="frontendRepo"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Github URL</FormLabel>
+                <FormLabel>Frontend Repo URL</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="https://github.com/username/reponame"
+                    placeholder="https://github.com/username/frontend"
                     {...field}
                   />
                 </FormControl>
@@ -136,18 +131,49 @@ export function AddProjectForm() {
               </FormItem>
             )}
           />
-          {/* Live link */}
+
+          {/* Frontend Live */}
           <FormField
             control={form.control}
-            name="liveLink"
+            name="frontendLive"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Live URL</FormLabel>
+                <FormLabel>Frontend Live URL</FormLabel>
+                <FormControl>
+                  <Input placeholder="https://example.com" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {/* Backend Repo */}
+          <FormField
+            control={form.control}
+            name="backendRepo"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Backend Repo URL</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="https://example.com"
+                    placeholder="https://github.com/username/backend"
                     {...field}
                   />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {/* Backend Live */}
+          <FormField
+            control={form.control}
+            name="backendLive"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Backend Live URL</FormLabel>
+                <FormControl>
+                  <Input placeholder="https://api.example.com" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -173,10 +199,28 @@ export function AddProjectForm() {
             )}
           />
 
-          {/* ✅ Dynamic Features */}
+          {/* Case Study */}
+          <FormField
+            control={form.control}
+            name="caseStudy"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Case Study</FormLabel>
+                <FormControl>
+                  <Textarea
+                    placeholder="Write full case study..."
+                    rows={6}
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {/* Dynamic Features */}
           <div className="space-y-3">
             <FormLabel>Features</FormLabel>
-
             <div className="space-y-2">
               {fields.map((field, index) => (
                 <div key={field.id} className="flex items-center gap-2">
@@ -195,7 +239,6 @@ export function AddProjectForm() {
                       </FormItem>
                     )}
                   />
-                  {/* Remove button (only if >1 feature) */}
                   {fields.length > 1 && (
                     <Button
                       type="button"
@@ -210,7 +253,6 @@ export function AddProjectForm() {
               ))}
             </div>
 
-            {/* ➕ Add Feature Button */}
             <Button
               type="button"
               variant="outline"

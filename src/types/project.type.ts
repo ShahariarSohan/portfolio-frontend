@@ -3,7 +3,11 @@ export interface IProject {
   title: string;
   thumbnail: string;
   description: string;
-  githubLink: string;
+  frontendRepo: string;
+  frontendLive: string;
+  backendRepo: string;
+  backendLive: string;
+  caseStudy: string;
   liveLink: string;
   features: string[];
   tags: string[];

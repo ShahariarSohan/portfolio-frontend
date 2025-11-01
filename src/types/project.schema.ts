@@ -6,30 +6,55 @@ export const ProjectSchema = z.object({
     .string()
     .min(3, "Title must be at least 3 characters.")
     .max(100, "Title cannot exceed 100 characters."),
+
   thumbnail: z
     .string()
     .url("Thumbnail must be a valid URL.")
     .optional()
     .or(z.literal("")), // allow empty string
+
   description: z
     .string()
     .min(10, "Description must be at least 10 characters."),
-  githubLink: z
+
+  // Frontend
+  frontendRepo: z
     .string()
-    .url("GitHub link must be a valid URL.")
+    .url("Frontend repo must be a valid URL.")
     .optional()
     .or(z.literal("")),
-  liveLink: z
+  frontendLive: z
     .string()
-    .url("Live link must be a valid URL.")
+    .url("Frontend live link must be a valid URL.")
     .optional()
     .or(z.literal("")),
+
+  // Backend
+  backendRepo: z
+    .string()
+    .url("Backend repo must be a valid URL.")
+    .optional()
+    .or(z.literal("")),
+  backendLive: z
+    .string()
+    .url("Backend live link must be a valid URL.")
+    .optional()
+    .or(z.literal("")),
+
+  // Features & tags
   features: z
     .array(z.string().min(1, "Feature cannot be empty"))
     .nonempty("At least one feature is required."),
   tags: z
     .array(z.string().min(1, "Tag cannot be empty"))
     .nonempty("At least one tag is required."),
+
+  // Case Study
+  caseStudy: z
+    .string()
+    .min(10, "Case study must be at least 10 characters.")
+    .optional()
+    .or(z.literal("")),
 });
 
 // Type for add project

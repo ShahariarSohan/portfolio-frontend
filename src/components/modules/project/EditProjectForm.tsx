@@ -35,20 +35,24 @@ export default function EditProjectForm({
   id,
 }: EditProjectFormProps) {
   const router = useRouter();
+  const [tagInput, setTagInput] = useState(initialData.tags?.join(", ") || "");
+
   const form = useForm<UpdateProjectSchemaType>({
     resolver: zodResolver(UpdateProjectSchema),
     defaultValues: {
       title: initialData.title ?? "",
       thumbnail: initialData.thumbnail ?? "",
-      githubLink: initialData.githubLink ?? "",
-      liveLink: initialData.liveLink ?? "",
+      frontendRepo: initialData.frontendRepo ?? "",
+      frontendLive: initialData.frontendLive ?? "",
+      backendRepo: initialData.backendRepo ?? "",
+      backendLive: initialData.backendLive ?? "",
       description: initialData.description ?? "",
+      caseStudy: initialData.caseStudy ?? "",
       features: initialData.features ?? [""],
       tags: initialData.tags ?? [],
-    }
+    },
   });
 
-  const [tagInput, setTagInput] = useState(initialData.tags?.join(", ") || "");
   const { fields, append, remove } = useFieldArray<FieldValues>({
     control: form.control,
     name: "features",
@@ -64,25 +68,18 @@ export default function EditProjectForm({
   };
 
   const handleFormSubmit = async (values: UpdateProjectSchemaType) => {
-    console.log("form edit project",values);
-    
+    console.log("form edit project", values);
     try {
       const res = await editProject(values, id);
-      console.log(res);
       if (res.success) {
         toast.success("Project updated successfully");
         router.push("/dashboard/manage-projects");
       } else {
-        if (!res.success) {
-          if (res.message === "Title already exists") {
-            toast.error(res.message);
-          } else {
-            toast.error("Something went wrong");
-          }
-        }
+        toast.error(res.message || "Something went wrong");
       }
     } catch (err) {
       console.log(err);
+      toast.error("An error occurred");
     }
   };
 
@@ -126,16 +123,17 @@ export default function EditProjectForm({
               </FormItem>
             )}
           />
-          {/* Github link */}
+
+          {/* Frontend Repo */}
           <FormField
             control={form.control}
-            name="githubLink"
+            name="frontendRepo"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Github URL</FormLabel>
+                <FormLabel>Frontend Repo URL</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="https://github.com/username/reponame"
+                    placeholder="https://github.com/username/frontend"
                     {...field}
                   />
                 </FormControl>
@@ -143,13 +141,14 @@ export default function EditProjectForm({
               </FormItem>
             )}
           />
-          {/* Live link */}
+
+          {/* Frontend Live */}
           <FormField
             control={form.control}
-            name="liveLink"
+            name="frontendLive"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Live URL</FormLabel>
+                <FormLabel>Frontend Live URL</FormLabel>
                 <FormControl>
                   <Input placeholder="https://example.com" {...field} />
                 </FormControl>
@@ -157,6 +156,40 @@ export default function EditProjectForm({
               </FormItem>
             )}
           />
+
+          {/* Backend Repo */}
+          <FormField
+            control={form.control}
+            name="backendRepo"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Backend Repo URL</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder="https://github.com/username/backend"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {/* Backend Live */}
+          <FormField
+            control={form.control}
+            name="backendLive"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Backend Live URL</FormLabel>
+                <FormControl>
+                  <Input placeholder="https://api.example.com" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
           {/* Description */}
           <FormField
             control={form.control}
@@ -166,7 +199,8 @@ export default function EditProjectForm({
                 <FormLabel>Description</FormLabel>
                 <FormControl>
                   <Textarea
-                    placeholder="Short description of the blog"
+                    placeholder="Short description..."
+                    rows={3}
                     {...field}
                   />
                 </FormControl>
@@ -175,10 +209,28 @@ export default function EditProjectForm({
             )}
           />
 
-          {/* ✅ Dynamic Features */}
+          {/* Case Study */}
+          <FormField
+            control={form.control}
+            name="caseStudy"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Case Study</FormLabel>
+                <FormControl>
+                  <Textarea
+                    placeholder="Write full case study..."
+                    rows={6}
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {/* Dynamic Features */}
           <div className="space-y-3">
             <FormLabel>Features</FormLabel>
-
             <div className="space-y-2">
               {fields.map((field, index) => (
                 <div key={field.id} className="flex items-center gap-2">
@@ -197,7 +249,6 @@ export default function EditProjectForm({
                       </FormItem>
                     )}
                   />
-                  {/* Remove button (only if >1 feature) */}
                   {fields.length > 1 && (
                     <Button
                       type="button"
@@ -211,8 +262,6 @@ export default function EditProjectForm({
                 </div>
               ))}
             </div>
-
-            {/* ➕ Add Feature Button */}
             <Button
               type="button"
               variant="outline"
@@ -236,6 +285,7 @@ export default function EditProjectForm({
             <FormMessage />
           </FormItem>
 
+          {/* Submit */}
           <div className="pt-4">
             <Button type="submit" className="w-full">
               Update Project
