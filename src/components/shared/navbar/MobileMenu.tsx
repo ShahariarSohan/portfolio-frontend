@@ -14,7 +14,7 @@ import {
   PopoverContent,
 } from "@/components/ui/popover";
 import NavLink from "./NavLink";
-import { AnimatedThemeToggler } from "./animated-theme-toggler";
+
 
 interface MobileMenuPopoverProps {
   navLinks: { name: string; href: string }[];
@@ -89,10 +89,6 @@ export default function MobileMenuPopover({
                 </NavigationMenuLink>
               </NavigationMenuItem>
             ))}
-            {/* Theme toggle in mobile */}
-            <div className="block lg:hidden mt-2">
-              <AnimatedThemeToggler />
-            </div>
           </NavigationMenuList>
         </NavigationMenu>
       </PopoverContent>

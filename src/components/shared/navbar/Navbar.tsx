@@ -47,8 +47,8 @@ export default async function Navbar() {
 
         {/* === Right Side === */}
         <div className="flex items-center gap-3 ml-auto">
-          {/* Theme Toggler (visible only lg+) */}
-          <div className="hidden lg:block">
+          {/* Theme Toggler  */}
+          <div className="">
             <AnimatedThemeToggler />
           </div>
 

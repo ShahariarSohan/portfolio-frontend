@@ -82,7 +82,7 @@ export const AnimatedThemeToggler = ({
         "cursor-pointer", className)} // ensure clickableclassName)}
       {...props}
     >
-      {isDark ? <Sun /> : <Moon />}
+      {isDark ? <Sun size="20" /> : <Moon size="20" />}
       <span className="sr-only">Toggle theme</span>
     </button>
   )
