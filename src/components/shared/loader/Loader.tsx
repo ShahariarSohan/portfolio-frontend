@@ -8,7 +8,7 @@ export default function Loader({
   message?: string;
 }) {
   return (
-    <div className="flex flex-col items-center justify-center min-h-[50vh] space-y-4">
+    <div className="flex  items-center justify-center min-h-[50vh] space-x-2">
       {/* Spinning Icon */}
       <Loader2 className="h-5 w-5 text-primary animate-spin" />
 

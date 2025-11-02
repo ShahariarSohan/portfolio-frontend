@@ -33,14 +33,14 @@ export default function Footer() {
             className="text-muted-foreground hover:text-primary transition text-xl"
             aria-label="LinkedIn"
           >
-            <FaLinkedin />
+            <FaLinkedin  />
           </a>
           <a
             href="mailto:sohanshahariar4@gmail.com"
             className="text-muted-foreground hover:text-primary transition text-xl"
             aria-label="Email"
           >
-            <FaEnvelope />
+            <FaEnvelope  />
           </a>
         </div>
       </div>

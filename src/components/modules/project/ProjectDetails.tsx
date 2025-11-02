@@ -1,16 +1,14 @@
 import Image from "next/image";
-// import { FaGithub } from "react-icons/fa";
-// import { HiOutlineLink } from "react-icons/hi";
 import { notFound } from "next/navigation";
 import { IProject } from "@/types/project.type";
+import { Button } from "@/components/ui/button";
+import { Github, ExternalLink } from "lucide-react";
 
-
-
-
-export default async function ProjectDetails({project }:{project:IProject}
-) {
-  
-
+export default async function ProjectDetails({
+  project,
+}: {
+  project: IProject;
+}) {
   if (!project) return notFound();
 
   return (
@@ -36,7 +34,8 @@ export default async function ProjectDetails({project }:{project:IProject}
           {project.tags.map((tag, i) => (
             <span
               key={i}
-              className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-sm font-medium rounded-full"
+              className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 
+              dark:text-white text-sm font-medium rounded-full"
             >
               {tag}
             </span>
@@ -60,31 +59,78 @@ export default async function ProjectDetails({project }:{project:IProject}
           </ul>
         </div>
 
-        {/* Links */}
-        {/* <div className="flex justify-center gap-6">
-          {project.githubLink && (
-            <a
-              href={project.githubLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-2 rounded-lg bg-muted hover:bg-accent text-foreground transition"
-            >
-              <FaGithub className="text-xl" />
-              <span>View Code</span>
-            </a>
-          )}
-          {project.liveLink && (
-            <a
-              href={project.liveLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-2 rounded-lg bg-muted hover:bg-accent text-foreground transition"
-            >
-              <HiOutlineLink className="text-xl" />
-              <span>Live Demo</span>
-            </a>
-          )}
-        </div> */}
+        {/* 🚀 Case Study */}
+        {project.caseStudy && (
+          <div className="mb-12">
+            <h2 className="text-2xl font-semibold text-foreground mb-4">
+              Case Study
+            </h2>
+            <p className="text-muted-foreground whitespace-pre-line leading-relaxed">
+              {project.caseStudy}
+            </p>
+          </div>
+        )}
+
+        {/* Buttons */}
+        <div className="space-y-4">
+          {/* Frontend Links */}
+          <div className="flex flex-wrap justify-center gap-4">
+            {project.frontendRepo && (
+              <a
+                href={project.frontendRepo}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button variant="secondary" className="flex items-center gap-2">
+                  <Github className="w-4 h-4 text-blue-600" />
+                  Frontend Repo
+                </Button>
+              </a>
+            )}
+
+            {project.frontendLive && (
+              <a
+                href={project.frontendLive}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button variant="secondary" className="flex items-center gap-2">
+                  <ExternalLink className="w-4 h-4 text-blue-600" />
+                  Frontend Live
+                </Button>
+              </a>
+            )}
+          </div>
+
+          {/* Backend Links */}
+          <div className="flex flex-wrap justify-center gap-4">
+            {project.backendRepo && (
+              <a
+                href={project.backendRepo}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button variant="secondary" className="flex items-center gap-2">
+                  <Github className="w-4 h-4 text-purple-600" />
+                  Backend Repo
+                </Button>
+              </a>
+            )}
+
+            {project.backendLive && (
+              <a
+                href={project.backendLive}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button variant="secondary" className="flex items-center gap-2">
+                  <ExternalLink className="w-4 h-4 text-purple-600" />
+                  Backend Live
+                </Button>
+              </a>
+            )}
+          </div>
+        </div>
       </div>
     </section>
   );
