@@ -133,7 +133,7 @@ export default function ProjectCard({
       {/* View Details in separate row */}
       <div className="mt-auto pt-2">
         <Link href={`/projects/${id}`} className="block w-full">
-          <Button className="w-full rounded-xl">View Details</Button>
+          <Button className="w-full rounded-md">View Details</Button>
         </Link>
       </div>
     </motion.div>
