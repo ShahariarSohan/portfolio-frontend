@@ -10,7 +10,7 @@ export default function Loader({
   return (
     <div className="flex flex-col items-center justify-center min-h-[50vh] space-y-4">
       {/* Spinning Icon */}
-      <Loader2 className="h-10 w-10 text-primary animate-spin" />
+      <Loader2 className="h-5 w-5 text-primary animate-spin" />
 
       {/* Message */}
       <p className="text-sm text-muted-foreground font-medium">{message}</p>

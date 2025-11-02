@@ -2,8 +2,8 @@
 import { IProject } from "@/types/project.type";
 import Image from "next/image";
 import Link from "next/link";
-import { FaGithub } from "react-icons/fa";
-import { HiOutlineLink } from "react-icons/hi";
+// import { FaGithub } from "react-icons/fa";
+// import { HiOutlineLink } from "react-icons/hi";
 
 
 
@@ -12,8 +12,6 @@ export default function ProjectCard({
   title,
   thumbnail,
   tags,
-  githubLink,
-  liveLink,
 }: IProject) {
   return (
     <div className="group relative bg-muted rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-transform transform hover:-translate-y-1">
@@ -53,7 +51,7 @@ export default function ProjectCard({
         </div>
 
         {/* GitHub & Live Links */}
-        <div className="flex gap-3 mt-1">
+        {/* <div className="flex gap-3 mt-1">
           {githubLink && (
             <a
               href={githubLink}
@@ -74,7 +72,7 @@ export default function ProjectCard({
               <HiOutlineLink />
             </a>
           )}
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -83,8 +83,6 @@ export default function ManageProjects() {
               id={project.id!}
               title={project.title}
               thumbnail={project.thumbnail}
-              githubLink={project.githubLink}
-              liveLink={project.liveLink}
               createdAt={project.createdAt!}
               updatedAt={project.updatedAt!}
               onDelete={handleDelete}

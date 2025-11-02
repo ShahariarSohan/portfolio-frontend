@@ -9,8 +9,6 @@ interface ManageProjectCardProps {
   id: number;
   title: string;
   thumbnail?: string;
-  githubLink?: string;
-  liveLink?: string;
   createdAt: string;
   updatedAt: string;
   onDelete: (id: number) => void;

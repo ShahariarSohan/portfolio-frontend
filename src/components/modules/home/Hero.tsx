@@ -18,7 +18,7 @@ export function Hero() {
                 </TextAnimate>
                 <span className="text-foreground">
                   <TextAnimate animation="slideLeft" by="character">
-                    MERN Stack Developer
+                    Full Stack Developer
                   </TextAnimate>
                 </span>
               </h1>

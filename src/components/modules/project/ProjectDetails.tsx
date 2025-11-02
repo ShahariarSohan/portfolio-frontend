@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { FaGithub } from "react-icons/fa";
-import { HiOutlineLink } from "react-icons/hi";
+// import { FaGithub } from "react-icons/fa";
+// import { HiOutlineLink } from "react-icons/hi";
 import { notFound } from "next/navigation";
 import { IProject } from "@/types/project.type";
 
@@ -61,7 +61,7 @@ export default async function ProjectDetails({project }:{project:IProject}
         </div>
 
         {/* Links */}
-        <div className="flex justify-center gap-6">
+        {/* <div className="flex justify-center gap-6">
           {project.githubLink && (
             <a
               href={project.githubLink}
@@ -84,7 +84,7 @@ export default async function ProjectDetails({project }:{project:IProject}
               <span>Live Demo</span>
             </a>
           )}
-        </div>
+        </div> */}
       </div>
     </section>
   );

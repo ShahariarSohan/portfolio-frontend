@@ -21,7 +21,7 @@ export default function AboutMe() {
           <div className="flex-1 space-y-6">
             <p className="text-lg text-foreground/70">
               Hi, I’m <span className="font-semibold">Shahariar Sohan</span>, a
-              passionate backend developer specializing in{" "}
+              passionate Full Stack Developer specializing in{" "}
               <span className="font-semibold">
                 MERN stack, PostgreSQL, and Prisma
               </span>
