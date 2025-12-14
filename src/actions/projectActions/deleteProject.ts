@@ -8,7 +8,7 @@ const deleteProject = async(id:number) => {
     });
      const result = await res.json();
       if (result?.success) {
-        revalidateTag("PROJECTS");
+        revalidateTag("PROJECTS","default");
       }
       return result;
 };

@@ -18,7 +18,7 @@ const addProject =async (project:ProjectSchemaType) => {
     });
     const result = await res.json();
     if (result?.success) {
-      revalidateTag("PROJECTS");
+      revalidateTag("PROJECTS","default");
     }
     return result;
 };

@@ -18,7 +18,7 @@ const editBlog = async (blog: UpdateBlogSchema,id:number) => {
   });
   const result = await res.json();
   if (result?.success) {
-    revalidateTag("BLOGS");
+    revalidateTag("BLOGS","default");
   }
   return result;
 };

@@ -17,7 +17,7 @@ const createBlog =async (blog:BlogSchemaType) => {
     });
     const result = await res.json();
     if (result?.success) {
-      revalidateTag("BLOGS");
+      revalidateTag("BLOGS","default");
     }
     return result;
 };
