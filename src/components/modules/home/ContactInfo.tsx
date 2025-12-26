@@ -1,7 +1,7 @@
 export default function ContactInfo() {
   return (
-    <section>
-      <div className="grid md:grid-cols-3 gap-6 mt-20 text-center md:text-start">
+    <section className="w-full md:px-0 mt-20 text-center lg:text-start">
+      <div className="grid md:grid-cols-3 gap-6 ">
         <div className="space-y-2">
           <h3 className="text-sm font-medium text-foreground uppercase tracking-wider">
             Work For

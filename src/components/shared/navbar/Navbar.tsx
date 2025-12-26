@@ -14,7 +14,7 @@ export default async function Navbar() {
   const session = await getAdminSession();
 
   const navLinks = [
-    { name: "Home", href: "#home" },
+    { name: "Home", href: "/" },
     { name: "About", href: "#about" },
     { name: "Projects", href: "#projects" },
     { name: "Contact", href: "#contact" },
@@ -22,8 +22,8 @@ export default async function Navbar() {
   ];
 
   return (
-    <header className=" sticky top-0 z-50 bg-background/80 backdrop-blur px-4 container mx-auto">
-      <div className="flex h-16 items-center justify-between gap-4 relative">
+    <header className=" sticky top-0 z-50 bg-background/80 backdrop-blur ">
+      <div className="flex h-16 items-center justify-between gap-4 relative px-4 container mx-auto">
         {/* === Left Side === */}
         <div className="flex items-center gap-2">
           <Link href="/" className="text-xl font-bold">

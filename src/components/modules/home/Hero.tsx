@@ -26,7 +26,7 @@ export function Hero() {
   return (
     <section
       ref={containerRef}
-      className="min-h-screen w-full overflow-x-hidden flex flex-col items-center justify-center relative overflow-hidden"
+      className="min-h-screen w-full flex flex-col items-center justify-center relative py-10 px-4 xl:py-0 xl:px-0 overflow-hidden"
     >
       {/* Animated Backgrounds */}
       <GradientMesh />
@@ -65,12 +65,13 @@ export function Hero() {
               </motion.h1>
 
               <motion.p
-                className="text-foreground max-w-2xl mx-auto lg:mx-0"
+                className="text-foreground max-w-xl mx-auto lg:mx-0"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
               >
-                Passionate about databases, servers, and scalable systems
+                Build scalable web applications with Next.js and React backed
+                by PostgreSQL and MongoDB.
               </motion.p>
             </motion.div>
 
