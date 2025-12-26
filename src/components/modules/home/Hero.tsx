@@ -1,18 +1,59 @@
+"use client";
 
 import { ShinyButton } from "@/components/ui/shiny-button";
 import { TextAnimate } from "@/components/ui/text-animate";
-
 import Image from "next/image";
+import ContactInfo from "./ContactInfo";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import GradientMesh from "@/components/shared/animation/GradientMesh";
+import FloatingBlobs from "@/components/shared/animation/FloatingBlobs";
+import MorphingCircles from "@/components/shared/animation/MorphingCircles";
+import SpiralParticles from "@/components/shared/animation/SpiralParticles";
+import CursorGlow from "@/components/shared/animation/CursorGlow";
 
 export function Hero() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [0, 150]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8]);
+
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center px-6 container mx-auto mt-10 lg:mt-0">
-      <div className="max-w-7xl mx-auto w-full">
-        <div className="flex flex-col md:flex-row justify-center  items-center gap-10 md:gap-20 ">
+    <section
+      ref={containerRef}
+      className="min-h-screen w-full overflow-x-hidden flex flex-col items-center justify-center relative overflow-hidden"
+    >
+      {/* Animated Backgrounds */}
+      <GradientMesh />
+      <FloatingBlobs />
+      <MorphingCircles />
+      <SpiralParticles />
+      <CursorGlow />
+
+      <motion.div
+        className="w-full relative z-10"
+        style={{ y, opacity, scale }}
+      >
+        <div className="flex flex-col-reverse md:flex-row justify-center items-center gap-10 md:gap-20">
           {/* Content - Left Side */}
-          <div className="space-y-8 text-center lg:text-left">
-            <div className="space-y-4">
-              <h1 className="text-3xl  font-bold text-balance leading-tight text-foreground">
+          <motion.div
+            className="space-y-8 text-center lg:text-left"
+            initial={{ opacity: 0, x: -100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+          >
+            <motion.div className="space-y-4">
+              <motion.h1
+                className="text-3xl font-bold text-balance leading-tight text-foreground"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
                 <TextAnimate animation="slideLeft" by="character">
                   Shahariar Sohan.
                 </TextAnimate>
@@ -21,12 +62,26 @@ export function Hero() {
                     Full Stack Developer
                   </TextAnimate>
                 </span>
-              </h1>
-              <p className=" text-foreground max-w-2xl mx-auto lg:mx-0">
+              </motion.h1>
+
+              <motion.p
+                className="text-foreground max-w-2xl mx-auto lg:mx-0"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+              >
                 Passionate about databases, servers, and scalable systems
-              </p>
-            </div>
-            <div className="flex justify-center lg:justify-start">
+              </motion.p>
+            </motion.div>
+
+            <motion.div
+              className="flex justify-center lg:justify-start"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
               <ShinyButton className="gap-2">
                 <a
                   href="/Shahariar-Sohan-Resume.pdf"
@@ -36,52 +91,47 @@ export function Hero() {
                   Download Resume
                 </a>
               </ShinyButton>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Profile Image - Right Side */}
-          <div className="flex justify-center lg:justify-end">
-            <div className="relative">
-              <div className="w-60 rounded-full overflow-hidden border-4 border-accent/20 shadow-2xl">
-                <Image
-                  src="/images/sohan.jpg"
-                  alt="Sohan - MERN Stack Developer"
-                  width={400}
-                  height={400}
-                  className="w-full h-full object-cover"
-                  priority
-                />
-              </div>
-              {/* Decorative elements */}
-              <div className="absolute -top-4 -right-4 w-8 h-8 bg-primary/20 rounded-full animate-pulse"></div>
-              <div className="absolute -bottom-6 -left-6 w-12 h-12 bg-accent/30 rounded-full animate-pulse delay-1000"></div>
-            </div>
-          </div>
+          <motion.div
+            className="flex justify-center lg:justify-end"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              duration: 0.8,
+              delay: 0.3,
+              ease: "easeOut",
+            }}
+          >
+            <motion.div
+              className="relative w-60 h-60 rounded-full overflow-hidden border-4 border-accent/20 shadow-2xl"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <Image
+                src="/images/profile.jpg"
+                alt="Sohan - MERN Stack Developer"
+                fill
+                sizes="240px"
+                className="object-cover"
+                priority
+              />
+            </motion.div>
+          </motion.div>
         </div>
-      </div>
-      {/* Contact Info */}
-      <div className="grid md:grid-cols-3 gap-6 mt-20 text-center md:text-start">
-        <div className="space-y-2">
-          <h3 className="text-sm font-medium text-foreground uppercase tracking-wider">
-            Work For
-          </h3>
-          <p className="text-foreground font-semibold">Web Application</p>
-        </div>
-        <div className="space-y-2">
-          <h3 className="text-sm font-medium text-foreground uppercase tracking-wider">
-            Phone
-          </h3>
-          <p className="text-foreground font-semibold">+880 1622 143630</p>
-        </div>
-        <div className="space-y-2">
-          <h3 className="text-sm font-medium text-foreground uppercase tracking-wider">
-            Drop me an email
-          </h3>
-          <p className="text-foreground font-semibold">
-            sohanshahariar4@gmail.com
-          </p>
-        </div>
-      </div>
+      </motion.div>
+
+      {/* Contact Info with staggered entrance */}
+      <motion.div
+        initial={{ opacity: 0, y: 60 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 1 }}
+        className="relative z-10"
+      >
+        <ContactInfo />
+      </motion.div>
     </section>
   );
 }

@@ -9,15 +9,10 @@ import {
 
 import { ArrowLeft } from "lucide-react";
 
-import LogoutButtonDashboard from "@/components/shared/Button/LogoutButtonDashboard";
+import LogoutButtonDashboard from "@/components/shared/button/LogoutButtonDashboard";
 import { AnimatedThemeToggler } from "@/components/shared/navbar/animated-theme-toggler";
 
-
 export function SidebarBottom() {
-
-
- 
-
   return (
     <div className="border-t border-border p-5 space-y-2">
       <SidebarMenu className="space-y-1">

@@ -14,14 +14,15 @@ export default async function Navbar() {
   const session = await getAdminSession();
 
   const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "Projects", href: "/projects" },
-    { name: "Blogs", href: "/blogs" },
+    { name: "Home", href: "#home" },
+    { name: "About", href: "#about" },
+    { name: "Projects", href: "#projects" },
+    { name: "Contact", href: "#contact" },
     ...(session ? [{ name: "Dashboard", href: "/dashboard" }] : []),
   ];
 
   return (
-    <header className="px-4 container mx-auto">
+    <header className=" sticky top-0 z-50 bg-background/80 backdrop-blur px-4 container mx-auto">
       <div className="flex h-16 items-center justify-between gap-4 relative">
         {/* === Left Side === */}
         <div className="flex items-center gap-2">
