@@ -61,7 +61,7 @@ export default function TechStack() {
         className="absolute bottom-20 right-20 w-96 h-96 bg-accent/5 rounded-full blur-3xl"
       />
 
-      <div className="container mx-auto px-6 lg:px-20 relative z-10">
+      <div className="container mx-auto px-4 relative z-10">
         {/* Section Heading with Animation */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}

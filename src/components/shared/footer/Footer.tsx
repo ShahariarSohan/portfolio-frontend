@@ -63,7 +63,7 @@ export default function Footer() {
         className="absolute bottom-20 right-10 w-72 h-72 bg-accent/5 rounded-full blur-3xl"
       />
 
-      <div className="container mx-auto px-6 lg:px-20 py-20 relative z-10">
+      <div className="container mx-auto px-4 py-20 relative z-10">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -98,7 +98,7 @@ export default function Footer() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto"
+          className="grid lg:grid-cols-2 gap-12 "
         >
           {/* Left Side - Contact Info */}
           <motion.div variants={itemVariants} className="space-y-8">
@@ -224,7 +224,7 @@ export default function Footer() {
               © {new Date().getFullYear()} Shahariar Sohan. All rights reserved.
             </p>
             <p className="text-sm text-muted-foreground">
-              Built with ❤️ using Next.js & TypeScript
+              Built with  Next.js ,PostgreSQL & TypeScript
             </p>
           </div>
         </div>
