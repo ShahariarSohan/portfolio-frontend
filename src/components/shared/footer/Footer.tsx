@@ -63,7 +63,7 @@ export default function Footer() {
         className="absolute bottom-20 right-10 w-72 h-72 bg-accent/5 rounded-full blur-3xl"
       />
 
-      <div className="container mx-auto px-4 py-20 relative z-10">
+      <div className="container mx-auto  py-20 relative z-10">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -83,7 +83,7 @@ export default function Footer() {
               Get In Touch
             </span>
           </div>
-          <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
+          <h2 className="text-4xl font-bold text-foreground mb-4">
             Let's Connect
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
@@ -98,13 +98,16 @@ export default function Footer() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid lg:grid-cols-2 gap-12 "
+          className="grid lg:grid-cols-2 gap-12"
         >
           {/* Left Side - Contact Info */}
-          <motion.div variants={itemVariants} className="space-y-8">
+          <motion.div
+            variants={itemVariants}
+            className="space-y-8 text-center lg:text-start"
+          >
             {/* Simple intro text */}
-            <div className="mb-12">
-              <h3 className="text-3xl font-bold text-foreground mb-3">
+            <div className="mb-12 px-4">
+              <h3 className="text-2xl font-bold text-foreground mb-3">
                 Let's Work Together
               </h3>
               <p className="text-muted-foreground text-lg leading-relaxed">
@@ -119,7 +122,7 @@ export default function Footer() {
               <motion.a
                 href="mailto:sohanshahariar4@gmail.com"
                 whileHover={{ x: 5 }}
-                className="flex items-center gap-4 group"
+                className="flex items-center justify-center lg:justify-start px-4 gap-4 group"
               >
                 <FaEnvelope className="text-2xl text-muted-foreground group-hover:text-primary transition-colors" />
                 <div>
@@ -136,7 +139,7 @@ export default function Footer() {
               <motion.a
                 href="tel:+8801622143630"
                 whileHover={{ x: 5 }}
-                className="flex items-center gap-4 group"
+                className="flex items-center  justify-center lg:justify-start  px-4 gap-4 group"
               >
                 <FaPhone className="text-2xl text-muted-foreground group-hover:text-primary transition-colors" />
                 <div>
@@ -152,7 +155,7 @@ export default function Footer() {
               {/* Location */}
               <motion.div
                 whileHover={{ x: 5 }}
-                className="flex items-center gap-4 group"
+                className="flex items-center  justify-center lg:justify-start px-4 gap-4 group"
               >
                 <FaMapMarkerAlt className="text-2xl text-muted-foreground group-hover:text-primary transition-colors" />
                 <div>
@@ -209,7 +212,7 @@ export default function Footer() {
                 transition={{ delay: 0.4 }}
                 className="mt-6 text-sm text-muted-foreground text-center lg:text-left"
               >
-                Available for freelance or remote opportunities
+                Available for remote opportunities
               </motion.p>
             </div>
           </motion.div>
@@ -224,7 +227,7 @@ export default function Footer() {
               © {new Date().getFullYear()} Shahariar Sohan. All rights reserved.
             </p>
             <p className="text-sm text-muted-foreground">
-              Built with  Next.js ,PostgreSQL & TypeScript
+              Built with Next.js , PostgreSQL & TypeScript
             </p>
           </div>
         </div>

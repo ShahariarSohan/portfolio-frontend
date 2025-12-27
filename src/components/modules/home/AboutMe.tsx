@@ -1,117 +1,147 @@
-import {
-  FaDatabase,
-  FaCode,
-  FaLightbulb,
-  FaReact,
-} from "react-icons/fa";
-import { SiNextdotjs } from "react-icons/si";
+/* eslint-disable react/no-unescaped-entities */
+"use client";
+
+import { motion } from "framer-motion";
+import { Code2, Database, Layers, Zap, Target, Rocket } from "lucide-react";
 
 export default function AboutMe() {
+  const skills = [
+    {
+      icon: Code2,
+      title: "Full Stack Development",
+      description:
+        "Building end-to-end web applications with modern technologies and best practices",
+    },
+    {
+      icon: Database,
+      title: "Database Architecture",
+      description:
+        "Designing scalable database schemas with PostgreSQL, MongoDB, and Prisma ORM",
+    },
+    {
+      icon: Layers,
+      title: "System Design",
+      description:
+        "Creating maintainable architectures that scale with business needs",
+    },
+    {
+      icon: Zap,
+      title: "Performance Optimization",
+      description:
+        "Implementing caching, lazy loading, and efficient data fetching strategies",
+    },
+    {
+      icon: Target,
+      title: "Problem Solving",
+      description:
+        "Breaking down complex challenges into elegant, testable solutions",
+    },
+    {
+      icon: Rocket,
+      title: "Modern Tooling",
+      description:
+        "Leveraging Next.js, TypeScript, and cutting-edge frameworks for production apps",
+    },
+  ];
+
   return (
     <section id="about" className="py-20 bg-background">
-      <div className="container mx-auto px-6 lg:px-20">
-        {/* Section Heading */}
-        <h2 className="text-3xl font-bold text-center text-foreground mb-12">
-          About Me
-        </h2>
+      <div className="container mx-auto px-4">
+        {/* Section Header */}
+        <div className="max-w-3xl mx-auto text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-4xl font-bold text-foreground mb-4">
+              About Me
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Crafting robust web solutions with modern technology
+            </p>
+          </motion.div>
+        </div>
 
-        {/* About Content */}
-        <div className="flex flex-col lg:flex-row items-start lg:items-center gap-12 lg:gap-20">
-          {/* Text Content */}
-          <div className="flex-1 space-y-6">
-            <p className="text-lg text-foreground/70">
-              Hi, I’m <span className="font-semibold">Shahariar Sohan</span>, a
-              passionate Full Stack Developer specializing in{" "}
-              <span className="font-semibold">
-                MERN stack, PostgreSQL, and Prisma
+        {/* Main Content */}
+        <div className="space-y-16 ">
+          {/* Introduction */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="space-y-6"
+          >
+            <p className="text-xl text-center lg:text-start text-foreground leading-relaxed">
+              I'm{" "}
+              <span className="font-semibold text-primary">
+                Shahariar Sohan
               </span>
-              . I build{" "}
-              <span className="font-semibold">
-                scalable, efficient, and maintainable web applications
-              </span>{" "}
-              that solve real-world problems.
+              , a Full Stack Developer specializing in building modern web
+              applications with Next.js and React. On the backend, I work
+              extensively with MongoDB and PostgreSQL, using Prisma and Mongoose
+              to design scalable, maintainable data layers.
             </p>
-            <p className="text-lg text-foreground/70">
-              My focus is on writing{" "}
-              <span className="font-semibold">
-                clean, professional, and enterprise-grade code
-              </span>
-              . I constantly explore new technologies to enhance performance,
-              security, and maintainability of applications.
+            <p className="text-lg text-muted-foreground  text-center lg:text-start leading-relaxed">
+              I am deeply passionate about backend engineering and the internal
+              mechanics of server-side systems—how servers operate, how data is
+              stored and managed in databases, how database management systems
+              function, and how cloud platforms handle data at scale.
+              Understanding these underlying mechanisms strongly motivates my
+              learning and development as an engineer.
             </p>
-            <p className="text-lg text-foreground/70">
-              My vision is to create software that not only works efficiently
-              but also provides{" "}
-              <span className="font-semibold">meaningful user experiences</span>
-              . I aim to contribute to impactful projects while growing as a
-              professional developer.
+            <p className="text-lg text-muted-foreground text-center lg:text-start leading-relaxed">
+              I aspire to become a highly skilled backend software engineer. So
+              far, I have worked on two significant projects: a Hidden
+              Dependency Risk Tracker and a Digital Wallet System, where I tried
+              to focused on backend logic, data modeling, and system
+              reliability.
             </p>
-          </div>
+          </motion.div>
 
-          {/* Skills / Highlights */}
-          <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div className="flex items-center gap-4 p-4 bg-muted rounded-xl shadow hover:shadow-lg transition">
-              <FaCode className="text-3xl text-blue-500" />
-              <div>
-                <h4 className="font-semibold text-foreground">Clean Code</h4>
-                <p className="text-foreground/70 text-sm">
-                  Professional, maintainable, and scalable coding practices.
-                </p>
-              </div>
+          {/* Skills Grid */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <h3 className="text-2xl font-bold text-center lg:text-start text-foreground mb-8">
+              What I Bring
+            </h3>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {skills.map((skill, index) => {
+                const Icon = skill.icon;
+                return (
+                  <motion.div
+                    key={skill.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: index * 0.05 }}
+                    whileHover={{ y: -4 }}
+                    className="group"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all">
+                        <Icon className="w-6 h-6" />
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-foreground mb-1">
+                          {skill.title}
+                        </h4>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          {skill.description}
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
-
-            <div className="flex items-center gap-4 p-4 bg-muted rounded-xl shadow hover:shadow-lg transition">
-              <FaDatabase className="text-3xl text-green-500" />
-              <div>
-                <h4 className="font-semibold text-foreground">
-                  Database Design
-                </h4>
-                <p className="text-foreground/70 text-sm">
-                  Efficient schema design, performance optimization, and data
-                  integrity.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-4 p-4 bg-muted rounded-xl shadow hover:shadow-lg transition">
-              <FaReact className="text-3xl text-cyan-500" />
-              <div>
-                <h4 className="font-semibold text-foreground">
-                  React App Building
-                </h4>
-                <p className="text-foreground/70 text-sm">
-                  Building responsive, interactive, and modern React
-                  applications.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-4 p-4 bg-muted rounded-xl shadow hover:shadow-lg transition">
-              <SiNextdotjs className="text-3xl text-foreground" />
-              <div>
-                <h4 className="font-semibold text-foreground">
-                  Next.js App Building
-                </h4>
-                <p className="text-foreground/70 text-sm">
-                  Developing SSR, SSG, and optimized Next.js applications for
-                  production.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-4 p-4 bg-muted rounded-xl shadow hover:shadow-lg transition">
-              <FaLightbulb className="text-3xl text-yellow-500" />
-              <div>
-                <h4 className="font-semibold text-foreground">
-                  Problem Solving
-                </h4>
-                <p className="text-foreground/70 text-sm">
-                  Tackling complex backend and fullstack challenges with clean
-                  solutions.
-                </p>
-              </div>
-            </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

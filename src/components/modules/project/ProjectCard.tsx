@@ -56,7 +56,7 @@ export default function ProjectCard({
       </div>
 
       {/* Content - Left aligned */}
-      <div className="relative h-full flex items-center px-8 py-6">
+      <div className="relative h-full flex items-center px-4  py-6">
         <div className="w-full max-w-2xl space-y-4">
           {/* Title */}
           <motion.h3

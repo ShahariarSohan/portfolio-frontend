@@ -39,7 +39,7 @@ export function Hero() {
         className="w-full relative z-10"
         style={{ y, opacity, scale }}
       >
-        <div className="flex flex-col-reverse md:flex-row justify-center items-center gap-10 md:gap-20">
+        <div className="container mx-auto flex flex-col-reverse md:flex-row justify-center items-center gap-10 md:gap-20">
           {/* Content - Left Side */}
           <motion.div
             className="space-y-8 text-center lg:text-left"
@@ -49,7 +49,7 @@ export function Hero() {
           >
             <motion.div className="space-y-4">
               <motion.h1
-                className="text-3xl font-bold text-balance leading-tight text-foreground"
+                className="text-4xl font-bold text-balance leading-tight text-foreground"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
@@ -57,7 +57,7 @@ export function Hero() {
                 <TextAnimate animation="slideLeft" by="character">
                   Shahariar Sohan.
                 </TextAnimate>
-                <span className="text-foreground">
+                <span className="text-2xl  text-foreground">
                   <TextAnimate animation="slideLeft" by="character">
                     Full Stack Developer
                   </TextAnimate>
@@ -65,13 +65,14 @@ export function Hero() {
               </motion.h1>
 
               <motion.p
-                className="text-foreground max-w-xl mx-auto lg:mx-0"
+                className="text-foreground max-w-xl text-lg mx-auto lg:mx-0"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
               >
-                Build scalable web applications with Next.js and React backed
-                by PostgreSQL and MongoDB.
+                Developing modern web applications with Next.js and React, with
+                a strong focus on scalable backend architecture and data
+                systems.
               </motion.p>
             </motion.div>
 
@@ -107,13 +108,13 @@ export function Hero() {
             }}
           >
             <motion.div
-              className="relative w-60 h-60 rounded-full overflow-hidden border-4 border-accent/20 shadow-2xl"
+              className="relative w-72 h-72 rounded-full overflow-hidden border-4 border-accent/20 shadow-2xl"
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
               <Image
                 src="/images/profile.jpg"
-                alt="Sohan - MERN Stack Developer"
+                alt="Sohan - Full Stack Developer"
                 fill
                 sizes="240px"
                 className="object-cover"
@@ -131,7 +132,7 @@ export function Hero() {
         transition={{ duration: 1, delay: 1 }}
         className="relative z-10"
       >
-        <ContactInfo />
+        {/* <ContactInfo /> */}
       </motion.div>
     </section>
   );
