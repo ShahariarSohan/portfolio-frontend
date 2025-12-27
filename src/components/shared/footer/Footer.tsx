@@ -1,9 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
-"use client";
+
+"use client"
 
 
 
-import { socialLinks } from "@/data/sociaLinksl";
+import { socialLinks } from "@/data/socialLinks";
 import { motion } from "framer-motion";
 import { FaEnvelope, FaMapMarkerAlt, FaPhone } from "react-icons/fa";
 
@@ -101,44 +102,31 @@ export default function Footer() {
         >
           {/* Left Side - Contact Info */}
           <motion.div variants={itemVariants} className="space-y-8">
-            {/* Brand Card */}
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              className="p-8 bg-card/50 backdrop-blur-sm border border-border rounded-3xl shadow-lg hover:shadow-xl transition-all"
-            >
-              <motion.h3
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                className="text-3xl font-bold text-foreground mb-2"
-              >
-                Shahariar Sohan
-              </motion.h3>
-              <p className="text-primary font-semibold text-lg mb-6">
-                Full Stack Developer
+            {/* Simple intro text */}
+            <div className="mb-12">
+              <h3 className="text-3xl font-bold text-foreground mb-3">
+                Let's Work Together
+              </h3>
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                I'm always interested in hearing about new projects and
+                opportunities.
               </p>
-              <p className="text-muted-foreground leading-relaxed">
-                Passionate about building scalable web applications with modern
-                technologies. Specialized in MERN stack, PostgreSQL, and cloud
-                solutions.
-              </p>
-            </motion.div>
+            </div>
 
-            {/* Contact Details */}
-            <motion.div variants={itemVariants} className="space-y-4">
+            {/* Contact Details - Clean List */}
+            <div className="space-y-6">
               {/* Email */}
               <motion.a
                 href="mailto:sohanshahariar4@gmail.com"
-                whileHover={{ x: 10, scale: 1.02 }}
-                className="flex items-center gap-4 p-5 bg-card/50 backdrop-blur-sm border border-border rounded-2xl hover:border-primary/50 transition-all group"
+                whileHover={{ x: 5 }}
+                className="flex items-center gap-4 group"
               >
-                <div className="w-12 h-12 bg-red-500/10 rounded-xl flex items-center justify-center group-hover:bg-red-500/20 transition-colors">
-                  <FaEnvelope className="text-2xl text-red-500" />
-                </div>
-                <div className="flex-1">
+                <FaEnvelope className="text-2xl text-muted-foreground group-hover:text-primary transition-colors" />
+                <div>
                   <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">
                     Email
                   </p>
-                  <p className="text-foreground font-semibold">
+                  <p className="text-foreground font-medium group-hover:text-primary transition-colors">
                     sohanshahariar4@gmail.com
                   </p>
                 </div>
@@ -147,17 +135,15 @@ export default function Footer() {
               {/* Phone */}
               <motion.a
                 href="tel:+8801622143630"
-                whileHover={{ x: 10, scale: 1.02 }}
-                className="flex items-center gap-4 p-5 bg-card/50 backdrop-blur-sm border border-border rounded-2xl hover:border-primary/50 transition-all group"
+                whileHover={{ x: 5 }}
+                className="flex items-center gap-4 group"
               >
-                <div className="w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center group-hover:bg-green-500/20 transition-colors">
-                  <FaPhone className="text-2xl text-green-500" />
-                </div>
-                <div className="flex-1">
+                <FaPhone className="text-2xl text-muted-foreground group-hover:text-primary transition-colors" />
+                <div>
                   <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">
                     Phone
                   </p>
-                  <p className="text-foreground font-semibold">
+                  <p className="text-foreground font-medium group-hover:text-primary transition-colors">
                     +880 1622 143630
                   </p>
                 </div>
@@ -165,96 +151,66 @@ export default function Footer() {
 
               {/* Location */}
               <motion.div
-                whileHover={{ x: 10, scale: 1.02 }}
-                className="flex items-center gap-4 p-5 bg-card/50 backdrop-blur-sm border border-border rounded-2xl"
+                whileHover={{ x: 5 }}
+                className="flex items-center gap-4 group"
               >
-                <div className="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center">
-                  <FaMapMarkerAlt className="text-2xl text-blue-500" />
-                </div>
-                <div className="flex-1">
+                <FaMapMarkerAlt className="text-2xl text-muted-foreground group-hover:text-primary transition-colors" />
+                <div>
                   <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">
                     Location
                   </p>
-                  <p className="text-foreground font-semibold">
+                  <p className="text-foreground font-medium">
                     Chattagram, Bangladesh
                   </p>
                 </div>
               </motion.div>
-            </motion.div>
+            </div>
           </motion.div>
 
           {/* Right Side - Social Links */}
-          <motion.div variants={itemVariants} className="flex items-center">
+          <motion.div
+            variants={itemVariants}
+            className="flex items-center justify-center lg:justify-start"
+          >
             <div className="w-full">
               <h3 className="text-2xl font-bold text-foreground mb-8 text-center lg:text-left">
                 Connect With Me
               </h3>
 
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+              {/* Simple horizontal icon row */}
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4">
                 {socialLinks.map((social, index) => (
                   <motion.a
                     key={social.name}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    whileHover={{
-                      scale: 1.1,
-                      rotate: [0, -5, 5, 0],
-                      transition: { duration: 0.3 },
-                    }}
+                    transition={{ delay: index * 0.05 }}
+                    whileHover={{ y: -5 }}
                     whileTap={{ scale: 0.95 }}
-                    className={`group relative flex flex-col items-center justify-center p-6 bg-card/50 backdrop-blur-sm border border-border rounded-2xl ${social.color} transition-all`}
+                    className="group relative"
+                    aria-label={social.name}
                   >
-                    {/* Glow effect */}
-                    <motion.div
-                      className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"
-                      style={{
-                        background: social.color.includes("blue-600")
-                          ? "rgba(37, 99, 235, 0.2)"
-                          : social.color.includes("gray")
-                          ? "rgba(107, 114, 128, 0.2)"
-                          : social.color.includes("blue-500")
-                          ? "rgba(59, 130, 246, 0.2)"
-                          : social.color.includes("pink")
-                          ? "rgba(219, 39, 119, 0.2)"
-                          : social.color.includes("green")
-                          ? "rgba(34, 197, 94, 0.2)"
-                          : "rgba(239, 68, 68, 0.2)",
-                      }}
-                    />
-
-                    <div className="relative z-10 text-4xl mb-3 text-muted-foreground group-hover:scale-110 transition-transform">
+                    <div className="text-5xl text-muted-foreground hover:text-foreground transition-colors">
                       {social.icon}
                     </div>
-                    <p className="relative z-10 text-sm font-semibold text-foreground">
-                      {social.name}
-                    </p>
-
-                    {/* Bottom accent */}
-                    <motion.div
-                      className={`absolute bottom-0 left-0 right-0 h-1 bg-current rounded-b-2xl ${social.borderColor}`}
-                      initial={{ scaleX: 0 }}
-                      whileHover={{ scaleX: 1 }}
-                      transition={{ duration: 0.3 }}
-                    />
                   </motion.a>
                 ))}
               </div>
 
-              {/* Availability Badge */}
-              <motion.div
+              {/* Optional: Small text below icons */}
+              <motion.p
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.8 }}
-                className="mt-8 text-center lg:text-left"
+                transition={{ delay: 0.4 }}
+                className="mt-6 text-sm text-muted-foreground text-center lg:text-left"
               >
-                
-              </motion.div>
+                Available for freelance or remote opportunities
+              </motion.p>
             </div>
           </motion.div>
         </motion.div>
