@@ -10,7 +10,7 @@ export const socialLinks = [
   {
     name: "Email",
     icon: <FaEnvelope />,
-    href: "mailto:sohanshahariar4@gmail.com",
+    href: "https://mail.google.com/mail/?view=cm&fs=1&to=sohanshahariar4@gmail.com&su=Subject&body=MessageBody",
     color: "hover:text-red-500 hover:bg-red-500/10",
     borderColor: "group-hover:border-red-500/50",
   },
@@ -39,7 +39,7 @@ export const socialLinks = [
   {
     name: "Messenger",
     icon: <FaFacebookF />,
-    href: "https://m.me/shahariarsohan",
+    href: "https://m.me/mdshahariar.sohan",
     color: "hover:text-pink-600 hover:bg-pink-600/10",
     borderColor: "group-hover:border-pink-600/50",
   },

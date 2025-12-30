@@ -34,7 +34,7 @@ export default function ProjectDetails({ project }: { project: IProject }) {
               transition={{ duration: 0.8 }}
               className="max-w-4xl"
             >
-              <h1 className="text-5xl lg:text-7xl font-black text-white mb-6 drop-shadow-lg">
+              <h1 className="text-5xl lg:text-7xl font-black text-foreground mb-6 drop-shadow-lg">
                 {project.title}
               </h1>
 
