@@ -1,19 +1,14 @@
 import {
   FaGithub,
   FaLinkedin,
-  FaEnvelope,
+  
   FaWhatsapp,
   FaFacebookF,
 } from "react-icons/fa";
 
+
+
 export const socialLinks = [
-  {
-    name: "Email",
-    icon: <FaEnvelope />,
-    href: "https://mail.google.com/mail/?view=cm&fs=1&to=sohanshahariar4@gmail.com&su=Subject&body=MessageBody",
-    color: "hover:text-red-500 hover:bg-red-500/10",
-    borderColor: "group-hover:border-red-500/50",
-  },
   {
     name: "LinkedIn",
     icon: <FaLinkedin />,
