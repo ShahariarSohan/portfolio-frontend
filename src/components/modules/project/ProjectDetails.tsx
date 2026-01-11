@@ -178,9 +178,7 @@ export default function ProjectDetails({ project }: { project: IProject }) {
             </motion.div>
           </section>
         )}
-
-        {/* Bottom Spacing */}
-        <div className="py-16" />
+       
       </div>
     </div>
   );

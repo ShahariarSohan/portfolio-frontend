@@ -3,7 +3,7 @@
 import { ShinyButton } from "@/components/ui/shiny-button";
 import { TextAnimate } from "@/components/ui/text-animate";
 import Image from "next/image";
-import ContactInfo from "./ContactInfo";
+
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import GradientMesh from "@/components/shared/animation/GradientMesh";
@@ -86,7 +86,7 @@ export function Hero() {
             >
               <ShinyButton className="gap-2">
                 <a
-                  href="/Shahariar-Sohan-Resume.pdf"
+                  href="/Shahariar_Sohan_Resume.pdf"
                   download
                   className="flex items-center gap-2"
                 >
