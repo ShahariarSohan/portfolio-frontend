@@ -1,6 +1,6 @@
 "use client";
 
-import { GoHomeButton } from "@/components/shared/button/GoHomeButton";
+import { GoHomeButton } from "@/components/shared/Button/GoHomeButton";
 import dynamic from "next/dynamic";
 
 const LoginForm = dynamic(() => import("@/components/modules/auth/LoginForm"), {
