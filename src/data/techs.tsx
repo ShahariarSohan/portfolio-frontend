@@ -9,7 +9,10 @@ import {
   SiMongoose,
   SiTailwindcss,
   SiRedux,
+  SiDocker,
+  SiRedis,
 } from "react-icons/si";
+import { HiServerStack } from "react-icons/hi2";
 export const techs = [
   {
     name: "JavaScript",
@@ -70,5 +73,20 @@ export const techs = [
     name: "Tailwind CSS",
     icon: <SiTailwindcss className="text-sky-500" />,
     color: "from-sky-500/20 to-sky-700/20",
+  },
+  {
+    name: "Docker",
+    icon: <SiDocker className="text-blue-500" />,
+    color: "from-blue-500/20 to-blue-700/20",
+  },
+  {
+    name: "Redis",
+    icon: <SiRedis className="text-red-500" />,
+    color: "from-red-500/20 to-red-700/20",
+  },
+  {
+    name: "VPS",
+    icon: <HiServerStack className="text-emerald-500" />,
+    color: "from-emerald-500/20 to-teal-700/20",
   },
 ];

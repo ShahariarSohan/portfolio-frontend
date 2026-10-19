@@ -79,25 +79,36 @@ export default function AboutMe() {
               <span className="font-semibold text-primary">
                 Shahariar Sohan
               </span>
-              , a Full Stack Developer specializing in building modern web
-              applications with Next.js and React. On the backend, I work
-              extensively with MongoDB and PostgreSQL, using Prisma and Mongoose
-              to design scalable, maintainable data layers.
-            </p>
-            <p className="text-lg text-muted-foreground  text-center lg:text-start leading-relaxed">
-              I am deeply passionate about backend engineering and the internal
-              mechanics of server-side systems—how servers operate, how data is
-              stored and managed in databases, how database management systems
-              function, and how cloud platforms handle data at scale.
-              Understanding these underlying mechanisms strongly motivates my
-              learning and development as an engineer.
+              , a Full Stack Web Developer at{" "}
+              <span className="font-semibold text-foreground">
+                SM Technology
+              </span>
+              , building modern web applications using React, Next.js, Node.js,
+              and Express.js. I work across frontend and backend development,
+              building APIs, managing databases, and supporting production
+              applications.
             </p>
             <p className="text-lg text-muted-foreground text-center lg:text-start leading-relaxed">
-              I aspire to become a highly skilled backend software engineer. So
-              far, I have worked on two significant projects: a Hidden
-              Dependency Risk Tracker and a Digital Wallet System, where I tried
-              to focused on backend logic, data modeling, and system
-              reliability.
+              My primary interest is backend engineering, particularly
+              server-side architecture, database management systems, data
+              modeling, system reliability, and how cloud infrastructure handles
+              data at scale. I enjoy understanding the internal mechanics of
+              software systems and solving problems through practical
+              engineering.
+            </p>
+            <p className="text-lg text-muted-foreground text-center lg:text-start leading-relaxed">
+              Through professional projects such as{" "}
+              <strong className="font-semibold text-foreground">
+                EzyDash and Daily Miles
+              </strong>
+              , along with personal projects like the{" "}
+              <strong className="font-semibold text-foreground">
+                Hidden Dependency Risk Tracker
+              </strong>
+              , I continue to strengthen my skills in backend development, API
+              design, and data management. My long-term goal is to become a
+              highly skilled Backend Software Engineer capable of designing
+              reliable, scalable, and maintainable systems.
             </p>
           </motion.div>
 
